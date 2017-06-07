@@ -16,3 +16,4 @@
 
 ## Supplemental
 - Router: see https://github.com/aksonov/react-native-router-flux
+- Orientation: see https://github.com/yamill/react-native-orientation

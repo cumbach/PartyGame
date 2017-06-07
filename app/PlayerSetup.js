@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     height:100,
     backgroundColor:'#fff',
     borderRadius:100,
-    marginBottom: 30
+    marginBottom: 0 //Needs adjusting
   },
   container: {
     flex: 1,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgreen',
     borderRadius: 5,
     padding: 10,
-    marginTop: 20,
+    marginTop: 0, //Needs adjusting
     fontSize: 34,
     color: 'black',
     textAlign: 'center',

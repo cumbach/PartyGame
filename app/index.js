@@ -12,9 +12,13 @@ import {
   View
 } from 'react-native';
 import { Router, Scene, ActionConst } from 'react-native-router-flux';
+import Orientation from 'react-native-orientation';
+
+// Views
 import InitialScreen from './InitialScreen';
 import PlayerSetup from './PlayerSetup';
-import Orientation from 'react-native-orientation';
+import TableView from './TableView';
+
 
 class App extends Component {
   componentWillMount(){
@@ -34,6 +38,12 @@ class App extends Component {
           <Scene
             key="playerSetup"
             component={PlayerSetup}
+            hideNavBar
+          />
+
+          <Scene
+            key="tableView"
+            component={TableView}
             hideNavBar
           />
 

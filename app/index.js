@@ -12,8 +12,8 @@ import {
   View
 } from 'react-native';
 import { Router, Scene, ActionConst } from 'react-native-router-flux';
-import WhiteDirections from './WhiteDirections';
-import BlackDirections from './BlackDirections';
+import InitialScreen from './InitialScreen';
+import PlayerSetup from './PlayerSetup';
 import Orientation from 'react-native-orientation';
 
 class App extends Component {
@@ -25,18 +25,16 @@ class App extends Component {
       <Router>
         <Scene key="root">
           <Scene
-            key="white"
-            component={WhiteDirections}
-            title="White Title"
-            type={ActionConst.RESET}
-            initial
+            key="initial"
+            component={InitialScreen}
+            title="Party Game"
+            initial // This sets InitialScreen as the initial screen
           />
 
           <Scene
-            key="black"
-            component={BlackDirections}
-            type={ActionConst.RESET}
-            title="Black Title"
+            key="playerSetup"
+            component={PlayerSetup}
+            hideNavBar
           />
 
         </Scene>

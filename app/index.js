@@ -5,35 +5,37 @@
  */
 
 import React, { Component } from 'react';
-// import { Root, Tabs } from './config/router';
 import {
   AppRegistry,
   StyleSheet,
   Text,
   View
 } from 'react-native';
+import { Router, Scene } from 'react-native-router-flux';
+import WhiteDirections from './WhiteDirections';
+import BlackDirections from './BlackDirections';
 
-export default class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          IOS:
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-          ANDROID:
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+const App = () => {
+  return (
+    <Router>
+      <Scene key="root">
+        <Scene
+          key="white"
+          component={WhiteDirections}
+          title="White Title"
+          initial
+        />
+
+        <Scene
+          key="black"
+          component={BlackDirections}
+          title="Black Title"
+        />
+
+      </Scene>
+    </Router>
+  )
+  return <WhiteDirections />;
 }
 
 const styles = StyleSheet.create({
@@ -54,3 +56,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default App;

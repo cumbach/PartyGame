@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import { Router, Scene } from 'react-native-router-flux';
+import { Router, Scene, ActionConst } from 'react-native-router-flux';
 import WhiteDirections from './WhiteDirections';
 import BlackDirections from './BlackDirections';
 
@@ -23,12 +23,14 @@ const App = () => {
           key="white"
           component={WhiteDirections}
           title="White Title"
+          type={ActionConst.RESET}
           initial
         />
 
         <Scene
           key="black"
           component={BlackDirections}
+          type={ActionConst.RESET}
           title="Black Title"
         />
 
@@ -37,24 +39,5 @@ const App = () => {
   )
   return <WhiteDirections />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 export default App;

@@ -13,3 +13,6 @@
 ## Running
 - `react-native run-ios`
 - `react-native run-android`
+
+## Supplemental
+- Router: see https://github.com/aksonov/react-native-router-flux

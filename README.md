@@ -10,6 +10,10 @@
 - `cd PartyGame`
 - `npm install`
 
+### Additional Install (should remove when possible)
+- `npm install --save react-native-orientation@git+https://github.com/yamill/react-native-orientation.git`
+- `react-native link react-native-orientation`
+
 ## Running
 - `react-native run-ios`
 - `react-native run-android`

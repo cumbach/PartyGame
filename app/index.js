@@ -21,8 +21,17 @@ import TableView from './TableView';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { numberOfPlayers: 0 };
+  }
   componentWillMount(){
     var next = Orientation.lockToLandscape();
+  }
+  increasePlayers() {
+    this.setState({ numberOfPlayers: this.state.numberOfPlayers + 1})
+    // IT LOOKS LIKE IT'S WORKING CORRECTLY BUT ACTUALLY ISN'T (SEE CONSOLE LOGS ON BEGIN)
+    console.log(this.state.numberOfPlayers);
   }
   render() {
     return (
@@ -38,12 +47,15 @@ class App extends Component {
           <Scene
             key="playerSetup"
             component={PlayerSetup}
+            numberOfPlayers={this.state.numberOfPlayers}
+            increasePlayers={this.increasePlayers.bind(this)}
             hideNavBar
           />
 
           <Scene
             key="tableView"
             component={TableView}
+            numberOfPlayers={this.state.numberOfPlayers} // THE STATE NEVER ACTUALLY RESETS HERE
             hideNavBar
           />
 

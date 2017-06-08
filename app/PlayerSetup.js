@@ -10,11 +10,31 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
+import { colors } from './config/data';
+
 class PlayerSetup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { buttonColor: '#fff', players: this.props.numberOfPlayers };
+  }
+  circleTouched() {
+    // THIS IS WHERE I WANT TO DO THINGS DIFFERENTLY
+    // I WANT TO RESET THE "numberOfPlayers" STATE IN THE PARENT ELEMENT
+    // BUT YOULL SEE THAT IT ISN'T ACTUALLY HAPPENING
+    if (this.state.players < 9) {
+      this.setState({ buttonColor: colors[this.state.players]});
+      this.setState({ players: this.state.players + 1})
+      this.props.increasePlayers();
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.circle}></TouchableOpacity>
+        <TouchableOpacity
+          key='circle'
+          onPress={this.circleTouched.bind(this)}
+          style={[{backgroundColor:this.state.buttonColor}, styles.circle]}>
+        </TouchableOpacity>
 
         <Text style={styles.directions}>
           PASS THE PHONE AROUND TO EACH PLAYER{'\n'}{'\n'}
@@ -40,7 +60,6 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     width:100,
     height:100,
-    backgroundColor:'#fff',
     borderRadius:100,
     marginBottom: 0 //Needs adjusting
   },

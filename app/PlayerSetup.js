@@ -9,22 +9,20 @@ import {
   View
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 
 import { colors } from './config/data';
+import { increasePlayerCount } from './actions/players';
 
 class PlayerSetup extends Component {
   constructor(props) {
     super(props);
-    this.state = { buttonColor: '#fff', players: this.props.numberOfPlayers };
+    this.state = { buttonColor: '#fff' };
   }
   circleTouched() {
-    // THIS IS WHERE I WANT TO DO THINGS DIFFERENTLY
-    // I WANT TO RESET THE "numberOfPlayers" STATE IN THE PARENT ELEMENT
-    // BUT YOULL SEE THAT IT ISN'T ACTUALLY HAPPENING
-    if (this.state.players < 9) {
-      this.setState({ buttonColor: colors[this.state.players]});
-      this.setState({ players: this.state.players + 1})
-      this.props.increasePlayers();
+    if (this.props.players.playerCount < 9) {
+      this.setState({ buttonColor: colors[this.props.players.playerCount]});
+      this.props.dispatch(increasePlayerCount());
     }
   }
   render() {
@@ -89,4 +87,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default PlayerSetup;
+export default connect(({ players }) => ({ players }))(PlayerSetup);

@@ -9,8 +9,6 @@ import { Actions } from 'react-native-router-flux';
 class TableView extends Component {
   constructor(props) {
      super(props);
-     // This is still zero!
-     console.log(this.props.numberOfPlayers);
   }
   render() {
     return (

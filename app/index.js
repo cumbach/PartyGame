@@ -11,56 +11,54 @@ import {
   Text,
   View
 } from 'react-native';
-import { Router, Scene, ActionConst } from 'react-native-router-flux';
+import { Router, Scene } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
+import { connect, Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
-// Views
+import reducers from './reducers';
 import InitialScreen from './InitialScreen';
-import PlayerSetup from './PlayerSetup';
-import TableView from './TableView';
+import PlayerSetup   from './PlayerSetup';
+import TableView     from './TableView';
 
+const RouterWithRedux = connect()(Router);
+
+const middleware = [thunk];
+const store = compose(
+  applyMiddleware(...middleware)
+)(createStore)(reducers);
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { numberOfPlayers: 0 };
-  }
   componentWillMount(){
-    var next = Orientation.lockToLandscape();
-  }
-  increasePlayers() {
-    this.setState({ numberOfPlayers: this.state.numberOfPlayers + 1})
-    // IT LOOKS LIKE IT'S WORKING CORRECTLY BUT ACTUALLY ISN'T (SEE CONSOLE LOGS ON BEGIN)
-    console.log(this.state.numberOfPlayers);
+    Orientation.lockToLandscape();
   }
   render() {
     return (
-      <Router>
-        <Scene key="root">
-          <Scene
-            key="initial"
-            component={InitialScreen}
-            title="Party Game"
-            initial // This sets InitialScreen as the initial screen
-          />
+      <Provider store={store}>
+        <RouterWithRedux>
+          <Scene key="root">
+            <Scene
+              key="initial"
+              component={InitialScreen}
+              title="Party Game"
+              initial // This sets InitialScreen as the initial screen
+            />
 
-          <Scene
-            key="playerSetup"
-            component={PlayerSetup}
-            numberOfPlayers={this.state.numberOfPlayers}
-            increasePlayers={this.increasePlayers.bind(this)}
-            hideNavBar
-          />
+            <Scene
+              key="playerSetup"
+              component={PlayerSetup}
+              hideNavBar
+            />
 
-          <Scene
-            key="tableView"
-            component={TableView}
-            numberOfPlayers={this.state.numberOfPlayers} // THE STATE NEVER ACTUALLY RESETS HERE
-            hideNavBar
-          />
-
-        </Scene>
-      </Router>
+            <Scene
+              key="tableView"
+              component={TableView}
+              hideNavBar
+            />
+          </Scene>
+        </RouterWithRedux>
+      </Provider>
     )
   }
 }

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
@@ -10,12 +11,13 @@ class InitialScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text
-          style={styles.text}
-          onPress={() => Actions.playerSetup()} // Actions.playerSetup refers to the key in the scene on index.js
-        >
-          Play!
-        </Text>
+
+        <TouchableOpacity
+          key='newGame'
+          onPress={() => Actions.playerSetup()}>
+          <Text style={styles.newGame}>New Game</Text>
+        </TouchableOpacity>
+
       </View>
     );
   }
@@ -28,12 +30,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'black',
   },
-  text: {
-    fontSize: 40,
-    color: 'white',
+  newGame: {
+    borderWidth:1,
+    backgroundColor: 'lightgreen',
+    overflow:'hidden', // doesn't work on Android??
+    borderRadius: 5,
+    padding: 10,
+    marginTop: 0, //Needs adjusting
+    fontSize: 34,
+    color: 'black',
     textAlign: 'center',
     margin: 10,
-  },
+  }
 });
 
 export default InitialScreen;

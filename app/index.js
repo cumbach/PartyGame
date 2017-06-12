@@ -1,15 +1,15 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+console.ignoredYellowBox = ['Warning: BackAndroid is deprecated', 'Remote debugger']; // removes warnings
 
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  // TouchableHighlight,
+  // Image,
+  // TouchableOpacity,
+  // Icon,
 } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
@@ -21,6 +21,8 @@ import reducers from './reducers';
 import InitialScreen from './InitialScreen';
 import PlayerSetup   from './PlayerSetup';
 import TableView     from './TableView';
+import GameTitle     from './GameTitle';
+import GamePlay      from './GamePlay';
 
 const RouterWithRedux = connect()(Router);
 
@@ -54,6 +56,18 @@ class App extends Component {
             <Scene
               key="tableView"
               component={TableView}
+              hideNavBar
+            />
+
+            <Scene
+              key="gameTitle"
+              component={GameTitle}
+              hideNavBar
+            />
+
+            <Scene
+              key="gamePlay"
+              component={GamePlay}
               hideNavBar
             />
           </Scene>

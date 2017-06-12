@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  // TouchableHighlight,
-  // Image,
   TouchableOpacity,
-  // Icon,
   View
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
 import { colors } from './config/data';
-import { increasePlayerCount } from './actions/players';
+import { increasePlayerCount } from './actions/gameActions';
 
 class PlayerSetup extends Component {
   constructor(props) {
@@ -39,12 +36,13 @@ class PlayerSetup extends Component {
           HAVE EVERYONE TOUCH THE PHONE TO RECEIVE A COLOR
         </Text>
 
-        <Text
-          style={styles.begin}
-          onPress={() => Actions.tableView()} // Actions.table refers to the key
-        >
-          Begin!
-        </Text>
+        <TouchableOpacity
+          key='done'
+          onPress={() => Actions.tableView()}>
+          <Text style={styles.done}>Done</Text>
+        </TouchableOpacity>
+
+
       </View>
     );
   }
@@ -73,9 +71,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  begin: {
+  done: {
     borderWidth:1,
     backgroundColor: 'lightgreen',
+    overflow:'hidden', // doesn't work on Android??
     borderRadius: 5,
     padding: 10,
     marginTop: 0, //Needs adjusting

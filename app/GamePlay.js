@@ -42,7 +42,7 @@ class GamePlay extends Component {
 
         <TouchableOpacity
           key='end'
-          onPress={() => Actions.gamePlay()}>
+          onPress={() => Actions.tableView()}>
           <Text style={styles.end}>Completed</Text>
         </TouchableOpacity>
 

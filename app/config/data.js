@@ -18,7 +18,14 @@ export const minigames = [
     topics: [
       'Beer Brands',
       'Dog Breeds',
-      'Country Capitals'
+      'Country Capitals',
+      'Animals',
+      'Fruits',
+      'Vegetables',
+      'Languages',
+      'Plants',
+      'Sports',
+      'Game Consoles'
     ]
   },
   {
@@ -27,11 +34,25 @@ export const minigames = [
     directions: 'Pick up the phone to hide the answer\nRead the trivia question aloud\n The first person to shout out the answer wins',
     topics: [
       'What is the capital of New York?',
-      'Who is the Prime Minister of Canada?'
+      'Who is the Prime Minister of Canada?',
+      'What year was JFK killed?',
+      'What is the deadliest animal in Africa?',
+      'What is Harry Potter\'s aunt\'s name?',
+      'What is the richest country in Africa?',
+      'What is the name of Ross\' first wife in Friends?',
+      'What temperature is absolute zero? (in Celsius)',
+      'A squared plus B squared equals C squared is often used as an example of what?'
     ],
     subtopics: [
       'Albany',
-      'Justin Trudeau'
+      'Justin Trudeau',
+      '1963',
+      'Hippo',
+      'Petunia',
+      'Nigeria',
+      'Carol',
+      '-273 degrees Celsius'
+      'The Pythagorean Theorem'
     ]
   },
   {
@@ -41,7 +62,9 @@ export const minigames = [
     topics: [
       'Ball',
       'Floor',
-      'Game'
+      'Game',
+      'Mug',
+      'Tail',
     ]
   }
 ]

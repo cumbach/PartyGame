@@ -8,9 +8,9 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import { minigames } from './config/data';
+import { minigames } from '../config/data';
 // import { increasePlayerCount } from './actions/players';
-import { setCurrentGame } from './actions/gameActions';
+import { setCurrentGame } from '../actions/gameActions';
 
 class GamePlay extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class GamePlay extends Component {
 
         <TouchableOpacity
           key='end'
-          onPress={() => Actions.tableView()}>
+          onPress={() => Actions.completedGame()}>
           <Text style={styles.end}>Completed</Text>
         </TouchableOpacity>
 

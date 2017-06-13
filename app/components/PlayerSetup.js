@@ -8,8 +8,8 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import { colors } from './config/data';
-import { increasePlayerCount } from './actions/gameActions';
+import { colors } from '../config/data';
+import { increasePlayerCount } from '../actions/gameActions';
 
 class PlayerSetup extends Component {
   constructor(props) {

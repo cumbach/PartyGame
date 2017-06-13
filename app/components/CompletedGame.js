@@ -8,37 +8,29 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import { minigames } from './config/data';
-import { setCurrentGame } from './actions/gameActions';
+import { minigames } from '../config/data';
+import { setCurrentGame } from '../actions/gameActions';
 
-class GameTitle extends Component {
+class CompletedGame extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: '', directions: '' };
-  }
-  componentWillMount() {
-    // Will need checks to make sure that unplayed games still exist
-    var gameChoiceNumber = Math.floor(Math.random() * minigames.length)
-    this.setState({ title: minigames[gameChoiceNumber].title })
-    this.setState({ directions: minigames[gameChoiceNumber].directions})
-    this.props.dispatch(setCurrentGame(gameChoiceNumber));
   }
   render() {
     return (
       <View style={styles.container}>
 
         <Text style={styles.title}>
-          {this.state.title}
+          Select the {minigames[this.props.currentGame.currentGameNumber].completed} of this Game
         </Text>
 
-        <Text style={styles.directions}>
-          {this.state.directions}
+        <Text style={styles.title}>
+          (Some sort of color wheel picker for players needs to be implemented here)
         </Text>
 
         <TouchableOpacity
-          key='start'
-          onPress={() => Actions.gamePlay()}>
-          <Text style={styles.start}>Start!</Text>
+          key='next'
+          onPress={() => Actions.tableView()}>
+          <Text style={styles.next}>Next</Text>
         </TouchableOpacity>
 
       </View>
@@ -65,7 +57,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  start: {
+  next: {
     borderWidth:1,
     backgroundColor: 'lightgreen',
     overflow:'hidden', // doesn't work on Android??
@@ -80,4 +72,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default connect(({ currentGame }) => ({ currentGame }))(GameTitle);
+export default connect(({ currentGame }) => ({ currentGame }))(CompletedGame);

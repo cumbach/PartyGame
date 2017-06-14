@@ -51,7 +51,7 @@ export const minigames = [
       'Petunia',
       'Nigeria',
       'Carol',
-      '-273 degrees Celsius'
+      '-273 degrees Celsius',
       'The Pythagorean Theorem'
     ]
   },

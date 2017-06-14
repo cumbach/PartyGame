@@ -83,6 +83,11 @@ class TableView extends Component {
             )
           })
         }
+        <TouchableOpacity
+          key='ready'
+          onPress={() => Actions.gameTitle()}>
+          <Text style={styles.ready}>Ready!</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -107,16 +112,18 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   ready: {
+    position: 'absolute', // Take out when possible
     borderWidth:1,
     backgroundColor: 'lightgreen',
     overflow:'hidden', // doesn't work on Android??
     borderRadius: 5,
     padding: 10,
-    marginTop: 10, //Needs adjusting
+    marginTop: 5,
     fontSize: 34,
     color: 'black',
     textAlign: 'center',
-    margin: 10,
+    width: 130,
+    left: -65 // Take out when positioning working correctly
   }
 });
 

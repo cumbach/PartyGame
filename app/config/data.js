@@ -14,7 +14,7 @@ export const minigames = [
   {
     title: 'Categories',
     completed: 'Loser',
-    directions: 'Go around the circle\nEach player has 3 seconds to name\nan item from the category',
+    directions: 'Go around the circle in turn.\nEach player has 3 seconds to name\nan item from the category',
     topics: [
       'Beer Brands',
       'Dog Breeds',
@@ -31,7 +31,7 @@ export const minigames = [
   {
     title: 'Trivia',
     completed: 'Winner',
-    directions: 'Pick up the phone to hide the answer\nRead the trivia question aloud\n The first person to shout out the answer wins',
+    directions: 'Pick up the phone to hide the answer.\nRead the trivia question aloud.\n The first person to shout out the correct answer wins',
     topics: [
       'What is the capital of New York?',
       'Who is the Prime Minister of Canada?',
@@ -47,7 +47,7 @@ export const minigames = [
       'Albany',
       'Justin Trudeau',
       '1963',
-      'Hippo',
+      'The Hippopotamus',
       'Petunia',
       'Nigeria',
       'Carol',

@@ -70,14 +70,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgreen',
     overflow:'hidden', // doesn't work on Android??
     borderRadius: 5,
-    padding: 10,
+    padding: 5,
     marginTop: 5,
-    fontSize: 34,
+    fontSize: 25,
     color: 'black',
     textAlign: 'center',
-    width: 130,
-    left: -65 // Take out when positioning working correctly
-    margin: 10,
+    left: -50, // Take out when positioning working correctly
+    margin: 5
   }
 });
 

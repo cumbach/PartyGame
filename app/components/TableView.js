@@ -63,20 +63,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   ready: {
-    position: 'absolute',
-    bottom: 10,
-    left: -40,
     borderWidth:1,
     backgroundColor: 'lightgreen',
     overflow:'hidden', // doesn't work on Android??
     borderRadius: 5,
     padding: 5,
-    marginTop: 5,
+    marginTop: 20,
     fontSize: 25,
     color: 'black',
     textAlign: 'center',
-    left: -50, // Take out when positioning working correctly
-    margin: 5
   }
 });
 

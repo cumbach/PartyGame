@@ -37,6 +37,7 @@ class TableVisuals extends Component {
     let startValue = 0;
     const playerCount = this.props.playerCount;
     const radius = 120;
+    const fixY = -65;  // Huan, how do we calculate this value?
 
     const centerX = radius - 20;
     const centerY = Math.ceil(this.props.viewHeight / 2) - 20;
@@ -47,7 +48,7 @@ class TableVisuals extends Component {
 
     return (
       <View
-        style={styles.container}
+        style={[{height:radius * 2}, {width:radius * 2}, styles.container]}
       >
         <Surface
           width={radius * 2}
@@ -71,7 +72,7 @@ class TableVisuals extends Component {
                 style={[{
                   backgroundColor: colors[idx],
                   left: centerX - x,
-                  top: centerY + y,
+                  top: centerY + y + fixY,
                   shadowColor: this.shouldHighlight(idx) ? '#000' : undefined,
                   shadowOffset: this.shouldHighlight(idx) ? { width: 1, height: 3 } : undefined,
                   shadowOpacity: this.shouldHighlight(idx) ? 0.8 : undefined,
@@ -89,13 +90,13 @@ class TableVisuals extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: 'white',
   },
   circle: {
-    borderWidth:2,
+    borderWidth: 2,
     borderColor:'rgba(0,0,0,0.4)',
     alignItems:'center',
     justifyContent:'center',

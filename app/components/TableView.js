@@ -20,6 +20,7 @@ class TableView extends Component {
   }
 
   render() {
+    console.log(this.props.players)
     return (
       <View style={styles.container}>
         <TableVisuals
@@ -31,7 +32,7 @@ class TableView extends Component {
           }}
           highlightIdx={this.state.selectedPlayer}
         />
-      
+
         <TouchableOpacity
           key='ready'
           onPress={() => Actions.gameTitle()}>

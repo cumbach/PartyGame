@@ -9,26 +9,40 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
 import { colors } from '../config/data';
-import { increasePlayerCount } from '../actions/gameActions';
+import { increasePlayerCount, setPlayerScores  } from '../actions/gameActions';
 
 class PlayerSetup extends Component {
   constructor(props) {
     super(props);
     this.state = { buttonColor: '#fff' };
   }
+
   circleTouched() {
     if (this.props.players.playerCount < 9) {
       this.setState({ buttonColor: colors[this.props.players.playerCount]});
       this.props.dispatch(increasePlayerCount());
     }
   }
+
+  completePlayerSetup() {
+    const playerCount = this.props.players.playerCount;
+    const playerScores = {};
+    [...Array(playerCount)].forEach((_, idx) => {
+      playerScores[colors[idx]] = 0;
+    })
+    console.log(playerScores)
+    this.props.dispatch(setPlayerScores(playerScores));
+    Actions.tableView();
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity
           key='circle'
           onPress={this.circleTouched.bind(this)}
-          style={[{backgroundColor:this.state.buttonColor}, styles.circle]}>
+          style={[{backgroundColor:this.state.buttonColor}, styles.circle]}
+        >
         </TouchableOpacity>
 
         <Text style={styles.directions}>
@@ -38,7 +52,10 @@ class PlayerSetup extends Component {
 
         <TouchableOpacity
           key='done'
-          onPress={() => Actions.tableView()}>
+          onPress={() => {
+            this.completePlayerSetup()
+          }}
+        >
           <Text style={styles.done}>Done</Text>
         </TouchableOpacity>
 

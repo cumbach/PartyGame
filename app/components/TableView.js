@@ -15,36 +15,23 @@ class TableView extends Component {
      super(props);
 
      this.state = {
-       viewHeight: undefined,
-       viewWidth: undefined,
        highlightIdx: undefined
      }
   }
 
   render() {
     return (
-      <View
-        style={styles.container}
-        onLayout={(event) => {
-          const { width, height } = event.nativeEvent.layout;
-          this.setState({ viewWidth: width, viewHeight: height })
-        }}
-      >
-        {
-          this.state.viewHeight && this.state.viewWidth ?
-            <TableVisuals
-              playerCount={this.props.players.playerCount}
-              viewHeight={this.state.viewHeight}
-              viewWidth={this.state.viewWidth}
-              onPlayerTouch={(playerIdx) => {
-                this.setState({
-                  selectedPlayer: playerIdx
-                });
-              }}
-              highlightIdx={this.state.selectedPlayer}
-            /> :
-            undefined
-        }
+      <View style={styles.container}>
+        <TableVisuals
+          playerCount={this.props.players.playerCount}
+          onPlayerTouch={(playerIdx) => {
+            this.setState({
+              selectedPlayer: playerIdx
+            });
+          }}
+          highlightIdx={this.state.selectedPlayer}
+        />
+      
         <TouchableOpacity
           key='ready'
           onPress={() => Actions.gameTitle()}>

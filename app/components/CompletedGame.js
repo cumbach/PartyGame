@@ -11,20 +11,46 @@ import { connect } from 'react-redux';
 import { minigames } from '../config/data';
 import { setCurrentGame } from '../actions/gameActions';
 
+import TableVisuals from './TableVisuals';
+
+
 class CompletedGame extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      viewHeight: undefined,
+      viewWidth: undefined,
+      highlightIdx: undefined
+    }
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View
+        style={styles.container}
+        onLayout={(event) => {
+          const { width, height } = event.nativeEvent.layout;
+          this.setState({ viewWidth: width, viewHeight: height })
+        }}
+      >
+        {
+          this.state.viewHeight && this.state.viewWidth ?
+            <TableVisuals
+              playerCount={this.props.players.playerCount}
+              viewHeight={this.state.viewHeight}
+              viewWidth={this.state.viewWidth}
+              onPlayerTouch={(playerIdx) => {
+                this.setState({
+                  selectedPlayer: playerIdx
+                });
+              }}
+              highlightIdx={this.state.selectedPlayer}
+            /> :
+            undefined
+        }
 
         <Text style={styles.title}>
           Select the {minigames[this.props.currentGame.currentGameNumber].completed} of this Game
-        </Text>
-
-        <Text style={styles.title}>
-          (Some sort of color wheel picker for players needs to be implemented here)
         </Text>
 
         <TouchableOpacity
@@ -72,4 +98,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default connect(({ currentGame }) => ({ currentGame }))(CompletedGame);
+export default connect(({ currentGame, players }) => ({ currentGame, players }))(CompletedGame);

@@ -23,7 +23,6 @@ import PlayerSetup   from './components/PlayerSetup';
 import TableView     from './components/TableView';
 import GameTitle     from './components/GameTitle';
 import GamePlay      from './components/GamePlay';
-import CompletedGame from './components/CompletedGame';
 
 const RouterWithRedux = connect()(Router);
 
@@ -69,12 +68,6 @@ class App extends Component {
             <Scene
               key="gamePlay"
               component={GamePlay}
-              hideNavBar
-            />
-
-            <Scene
-              key="completedGame"
-              component={CompletedGame}
               hideNavBar
             />
           </Scene>

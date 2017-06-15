@@ -9,14 +9,14 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
 import { minigames } from '../config/data';
-// import { increasePlayerCount } from './actions/players';
-import { setCurrentGame } from '../actions/gameActions';
+import { setCurrentGame, shiftTableState } from '../actions/gameActions';
 
 class GamePlay extends Component {
   constructor(props) {
     super(props);
     this.state = { topic: '', subtopics:'' };
   }
+
   componentWillMount() {
     // Will need checks to make sure that unplayed games still exist
     var currentGameNumber = this.props.currentGame.currentGameNumber;
@@ -27,6 +27,7 @@ class GamePlay extends Component {
       this.setState({ subtopic: minigames[currentGameNumber].subtopics[randomTopic] })
     }
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -42,7 +43,11 @@ class GamePlay extends Component {
 
         <TouchableOpacity
           key='end'
-          onPress={() => Actions.completedGame()}>
+          onPress={() => {
+            this.props.dispatch(shiftTableState('complete'));
+            Actions.tableView();
+          }}
+        >
           <Text style={styles.end}>Completed</Text>
         </TouchableOpacity>
 

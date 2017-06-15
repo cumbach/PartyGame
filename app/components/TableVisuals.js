@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
+  Text,
   View,
   TouchableOpacity
 } from 'react-native';
 import { Platform, ART } from 'react-native'
 const { Surface, Shape, Path, Group } = ART
-
-import { colors } from '../config/data';
 
 class TableVisuals extends Component {
   constructor(props) {
@@ -47,7 +46,7 @@ class TableVisuals extends Component {
 
     return (
       <View
-        style={[{height:radius * 2}, {width:radius * 2}, styles.container]}
+        style={{ height:radius * 2, width:radius * 2}}
       >
         <Surface
           width={radius * 2}
@@ -69,7 +68,7 @@ class TableVisuals extends Component {
                 key={`Player${idx + 1}`}
                 onPress={() => this.props.onPlayerTouch(idx)}
                 style={[{
-                  backgroundColor: colors[idx],
+                  backgroundColor: this.props.playerOrder[idx],
                   left: centerX - x,
                   top: centerY + y,
                   shadowColor: this.shouldHighlight(idx) ? '#000' : undefined,
@@ -78,6 +77,7 @@ class TableVisuals extends Component {
                   shadowRadius: this.shouldHighlight(idx) ? 3 : undefined
                 }, styles.circle]}
               >
+              <Text style={styles.score}>{this.props.playerScores[this.props.playerOrder[idx]]}</Text>
               </TouchableOpacity>
             )
           })
@@ -88,12 +88,6 @@ class TableVisuals extends Component {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: 'white',
-  },
   circle: {
     borderWidth: 2,
     borderColor:'rgba(0,0,0,0.4)',
@@ -104,6 +98,10 @@ const styles = StyleSheet.create({
     borderRadius:40,
     marginBottom: 0, //Needs adjusting
     position: 'absolute'
+  },
+  score: {
+    fontSize: 20,
+    color: 'black'
   }
 });
 

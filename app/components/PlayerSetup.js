@@ -9,7 +9,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
 import { colors } from '../config/data';
-import { increasePlayerCount, setPlayerScores  } from '../actions/gameActions';
+import { increasePlayerCount, setPlayerScores, setPlayerOrder  } from '../actions/gameActions';
 
 class PlayerSetup extends Component {
   constructor(props) {
@@ -30,8 +30,9 @@ class PlayerSetup extends Component {
     [...Array(playerCount)].forEach((_, idx) => {
       playerScores[colors[idx]] = 0;
     })
-    console.log(playerScores)
+
     this.props.dispatch(setPlayerScores(playerScores));
+    this.props.dispatch(setPlayerOrder(colors.slice(0, playerCount)));
     Actions.tableView();
   }
 

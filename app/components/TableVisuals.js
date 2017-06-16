@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Animated
 } from 'react-native';
 import { Platform, ART } from 'react-native'
 const { Surface, Shape, Path, Group } = ART
@@ -11,6 +12,7 @@ const { Surface, Shape, Path, Group } = ART
 class TableVisuals extends Component {
   constructor(props) {
      super(props);
+
   }
 
   createPath(cx, cy, r, startAngle, arcAngle) {
@@ -33,8 +35,8 @@ class TableVisuals extends Component {
   }
 
   render() {
-    let startValue = 0;
     const playerCount = this.props.playerCount;
+    let startValue = 0;
     const radius = 120;
 
     const centerX = radius - 20;
@@ -44,9 +46,12 @@ class TableVisuals extends Component {
     const backgroundPath = this.createPath(radius, radius, radius - width / 2, 0, 360);
     const lengthFromCenter = radius / 1.5;
 
+    console.log('hi')
+    console.log(this.props.spin)
+
     return (
-      <View
-        style={{ height:radius * 2, width:radius * 2}}
+      <Animated.View
+        style={{ height:radius * 2, width:radius * 2, transform: [{rotate: this.props.spin}]}}
       >
         <Surface
           width={radius * 2}
@@ -82,7 +87,7 @@ class TableVisuals extends Component {
             )
           })
         }
-      </View>
+      </Animated.View>
     );
   }
 };

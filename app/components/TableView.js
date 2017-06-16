@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+  Animated
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -24,15 +25,32 @@ class TableView extends Component {
     super(props);
 
     this.state = {
-      selectedPlayerIdx: undefined
+      selectedPlayerIdx: undefined,
+      spinValue: new Animated.Value(0)
     }
+
   }
 
   completeGame() {
-    this.handleScoreChange();
-    this.props.dispatch(shiftPlayerOrder());
-    this.setState({ selectedPlayerIdx: undefined });
-    this.props.dispatch(shiftTableState('new'));
+    var duration = 1000;
+    this.startCompleteAnimation(duration);
+
+    setTimeout(() => {
+      this.handleScoreChange();
+      this.props.dispatch(shiftPlayerOrder());
+      this.setState({ selectedPlayerIdx: undefined });
+      this.props.dispatch(shiftTableState('new'));
+    }, duration);
+  }
+
+  startCompleteAnimation(duration) {
+    Animated.timing(
+      this.state.spinValue,
+      {
+        toValue: 1,
+        duration: duration,
+      }
+    ).start();
   }
 
   handleScoreChange() {
@@ -83,11 +101,19 @@ class TableView extends Component {
 
   render() {
     const tableState = this.props.currentGame.tableState;
+    const playerCount = this.props.players.playerCount
+
+    const spinDegrees = '-' + String(360 / playerCount) + 'deg';
+    const spin = this.state.spinValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', spinDegrees]
+    });
 
     return (
       <View style={styles.container}>
         <TableVisuals
-          playerCount={this.props.players.playerCount}
+          spin={tableState === 'new' ? '0deg' : spin }
+          playerCount={playerCount}
           onPlayerTouch={(playerIdx) => {
             if (tableState === 'complete') {
               this.setState({

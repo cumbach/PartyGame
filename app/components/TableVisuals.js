@@ -36,7 +36,6 @@ class TableVisuals extends Component {
 
   render() {
     const playerCount = this.props.playerCount;
-    let startValue = 0;
     const radius = 120;
 
     const centerX = radius - 20;
@@ -45,9 +44,6 @@ class TableVisuals extends Component {
     const width = 1;
     const backgroundPath = this.createPath(radius, radius, radius - width / 2, 0, 360);
     const lengthFromCenter = radius / 1.5;
-
-    console.log('hi')
-    console.log(this.props.spin)
 
     return (
       <Animated.View

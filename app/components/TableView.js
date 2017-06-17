@@ -31,6 +31,12 @@ class TableView extends Component {
 
   }
 
+  componentWillMount() {
+    if (this.props.currentGame.tableState === 'new') {
+      this.currentPlayerAnimation();
+    }
+  }
+
   completeGame() {
     var duration = 1000;
     this.startCompleteAnimation(duration);
@@ -40,7 +46,18 @@ class TableView extends Component {
       this.props.dispatch(shiftPlayerOrder());
       this.setState({ selectedPlayerIdx: undefined });
       this.props.dispatch(shiftTableState('new'));
+      this.currentPlayerAnimation()
     }, duration);
+  }
+
+  currentPlayerAnimation() {
+    var timeout = setInterval(() => {
+      this.state.selectedPlayerIdx === 0 ? this.setState({ selectedPlayerIdx: null }) : this.setState({ selectedPlayerIdx: 0 })
+    }, 500)
+
+    setTimeout(() => {
+      clearInterval(timeout)
+    }, 8000);
   }
 
   startCompleteAnimation(duration) {
@@ -126,6 +143,7 @@ class TableView extends Component {
 
             return undefined;
           }}
+          tableState={tableState}
           highlightIdx={this.state.selectedPlayerIdx}
           playerOrder={this.props.players.playerOrder}
           playerScores={this.props.players.playerScores}
@@ -154,7 +172,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'black',
     textAlign: 'center',
-    // margin: 10,
     marginBottom: 20
   },
   button: {

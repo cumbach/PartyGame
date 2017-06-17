@@ -2,6 +2,7 @@ import { handleActions } from 'redux-actions';
 
 export default handleActions({
   SET_CURRENT_GAME: (state, gameNumber) => ({
+    ...state,
     currentGameNumber: gameNumber.payload
   }),
   SHIFT_TABLE_STATE: (state, action) => ({

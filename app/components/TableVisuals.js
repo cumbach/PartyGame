@@ -42,6 +42,11 @@ class TableVisuals extends Component {
     return idx === this.props.highlightIdx;
   }
 
+  displayScores() {
+    return this.props.tableState === 'new' ? 'flex' : 'none'
+
+  }
+
   render() {
     const playerCount = this.props.playerCount;
     const radius = 160;
@@ -56,6 +61,7 @@ class TableVisuals extends Component {
     const lengthFromCenter = radius / 1.5;
 
     return (
+
       <Animated.View
         style={[{
           height:radius * 2,
@@ -94,7 +100,11 @@ class TableVisuals extends Component {
                   shadowRadius: this.shouldHighlight(idx) ? 3 : undefined
                 }, styles.circle]}
               >
-              <Text style={[{ fontSize: scoreSize }, styles.score]}>{this.props.playerScores[this.props.playerOrder[idx]]}</Text>
+              <Text
+                style={[{
+                  fontSize: scoreSize,
+                  display: this.displayScores(),
+                }, styles.score]}>{this.props.playerScores[this.props.playerOrder[idx]]}</Text>
               </TouchableOpacity>
             )
           })

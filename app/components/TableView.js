@@ -33,7 +33,7 @@ class TableView extends Component {
 
   componentWillMount() {
     if (this.props.currentGame.tableState === 'new') {
-      this.currentPlayerAnimation();
+      this.setState({ selectedPlayerIdx: 0 })
     }
   }
 
@@ -46,18 +46,8 @@ class TableView extends Component {
       this.props.dispatch(shiftPlayerOrder());
       this.setState({ selectedPlayerIdx: undefined });
       this.props.dispatch(shiftTableState('new'));
-      this.currentPlayerAnimation()
+      this.setState({ selectedPlayerIdx: 0 })
     }, duration);
-  }
-
-  currentPlayerAnimation() {
-    var timeout = setInterval(() => {
-      this.state.selectedPlayerIdx === 0 ? this.setState({ selectedPlayerIdx: null }) : this.setState({ selectedPlayerIdx: 0 })
-    }, 500)
-
-    setTimeout(() => {
-      clearInterval(timeout)
-    }, 8000);
   }
 
   startCompleteAnimation(duration) {

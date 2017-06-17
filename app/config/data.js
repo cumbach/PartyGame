@@ -25,7 +25,11 @@ export const minigames = [
       'Languages',
       'Plants',
       'Sports',
-      'Game Consoles'
+      'Game Consoles',
+      'Board Games',
+      '90s TV Shows',
+      'Types of Fish',
+      'Cereal Brands'
     ]
   },
   {
@@ -40,8 +44,17 @@ export const minigames = [
       'What is Harry Potter\'s aunt\'s name?',
       'What is the richest country in Africa?',
       'What is the name of Ross\' first wife in Friends?',
-      'What temperature is absolute zero? (in Celsius)',
-      'A squared plus B squared equals C squared is often used as an example of what?'
+      'What is the scientific term for -273 degrees Celsius?',
+      'Who is the American Secretary of State?',
+      'How many squares are there on a chess board?',
+      'Which historical prince was used in Bram Stoker\'s famous novel?',
+      'Which actor was also known at "The Tramp"?',
+      'Which athlete made the most money in 2017?',
+      'Which team won the NBA championships in 2017?',
+      'Which website had the most visits in 2017?',
+      'What city has the highest population?',
+      'What occurs at 212 degrees Fahreneheit'
+
     ],
     subtopics: [
       'Albany',
@@ -51,8 +64,16 @@ export const minigames = [
       'Petunia',
       'Nigeria',
       'Carol',
-      '-273 degrees Celsius',
-      'The Pythagorean Theorem'
+      'Absolute Zero',
+      'Rex Tillerson',
+      '64',
+      'Dracula',
+      'Charlie Chaplan',
+      'Cristiano Ronaldo',
+      'Golden State Warriors',
+      'Google',
+      'Tokyo',
+      'Water Boils'
     ]
   },
   {
@@ -65,6 +86,11 @@ export const minigames = [
       'Game',
       'Mug',
       'Tail',
+      'Eight',
+      'Drop',
+      'Real',
+      'Shoe',
+      'Fear'
     ]
   }
 ]

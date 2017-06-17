@@ -4,7 +4,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Animated
+  Animated,
+  Image
 } from 'react-native';
 import { Platform, ART } from 'react-native'
 const { Surface, Shape, Path, Group } = ART
@@ -12,6 +13,30 @@ const { Surface, Shape, Path, Group } = ART
 class TableVisuals extends Component {
   constructor(props) {
      super(props);
+     this.state = {
+       chevronPosition: new Animated.Value(0)
+     }
+
+  }
+  componentDidMount() {
+    this.animateChevron();
+  }
+
+  animateChevron(){
+    Animated.sequence([
+      Animated.timing(this.state.chevronPosition, {
+        toValue: -15,
+        duration: 700,
+      }),
+      Animated.timing(this.state.chevronPosition, {
+        toValue: 0,
+        duration: 700
+     })
+    ]).start(event => {
+      if (event.finished) {
+        this.animateChevron();
+      }
+    });
   }
 
   createPath(cx, cy, r, startAngle, arcAngle) {
@@ -30,7 +55,7 @@ class TableVisuals extends Component {
   }
   getPlayerSize(playerCount) {
     if (playerCount <= 4) {
-      return 100;
+      return 95;
     } else if (playerCount <= 7) {
       return 80;
     } else {
@@ -42,14 +67,14 @@ class TableVisuals extends Component {
     return idx === this.props.highlightIdx;
   }
 
-  displayScores() {
+  displayType() {
     return this.props.tableState === 'new' ? 'flex' : 'none'
-
   }
+
 
   render() {
     const playerCount = this.props.playerCount;
-    const radius = 160;
+    const radius = 150;
     const playerSize = this.getPlayerSize(playerCount);
     const scoreSize = playerSize/2;
 
@@ -59,6 +84,8 @@ class TableVisuals extends Component {
     const width = 1;
     const backgroundPath = this.createPath(radius, radius, radius - width / 2, 0, 360);
     const lengthFromCenter = radius / 1.5;
+
+    let { chevronPosition } = this.state;
 
     return (
 
@@ -103,12 +130,16 @@ class TableVisuals extends Component {
               <Text
                 style={[{
                   fontSize: scoreSize,
-                  display: this.displayScores(),
+                  display: this.displayType(),
                 }, styles.score]}>{this.props.playerScores[this.props.playerOrder[idx]]}</Text>
               </TouchableOpacity>
             )
           })
         }
+        <Animated.Image
+          style={{display: this.displayType(), top: 15, width: 20, height: 20, transform: [{translateY: chevronPosition}]}}
+          source={require('../config/img/chevron.png')}
+        />
       </Animated.View>
     );
   }
@@ -116,7 +147,8 @@ class TableVisuals extends Component {
 
 const styles = StyleSheet.create({
   table: {
-    marginLeft: 10
+    marginLeft: 10,
+    alignItems: 'center'
   },
   circle: {
     borderWidth: 2,

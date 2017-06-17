@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     overflow:'hidden', // doesn't work on Android??
     borderRadius: 5,
     padding: 10,
-    marginTop: 0, //Needs adjusting
+    marginTop: 20, //Needs adjusting
     fontSize: 34,
     color: 'black',
     textAlign: 'center',

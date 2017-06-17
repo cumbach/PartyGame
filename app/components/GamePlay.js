@@ -67,13 +67,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'black',
     textAlign: 'center',
-    margin: 10,
+    marginBottom: 10,
   },
   subtopic: {
     fontSize: 18,
     color: 'black',
     textAlign: 'center',
-    margin: 10,
+    marginBottom: 30,
+
   },
   end: {
     borderWidth:1,

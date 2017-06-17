@@ -12,7 +12,6 @@ const { Surface, Shape, Path, Group } = ART
 class TableVisuals extends Component {
   constructor(props) {
      super(props);
-
   }
 
   createPath(cx, cy, r, startAngle, arcAngle) {
@@ -29,6 +28,15 @@ class TableVisuals extends Component {
     }
     return p
   }
+  getPlayerSize(playerCount) {
+    if (playerCount <= 4) {
+      return 100;
+    } else if (playerCount <= 7) {
+      return 80;
+    } else {
+      return 60;
+    }
+  }
 
   shouldHighlight(idx) {
     return idx === this.props.highlightIdx;
@@ -36,10 +44,12 @@ class TableVisuals extends Component {
 
   render() {
     const playerCount = this.props.playerCount;
-    const radius = 120;
+    const radius = 160;
+    const playerSize = this.getPlayerSize(playerCount);
+    const scoreSize = playerSize/2;
 
-    const centerX = radius - 20;
-    const centerY = radius - 20;
+    const centerX = radius - playerSize/2;
+    const centerY = radius - playerSize/2;
 
     const width = 1;
     const backgroundPath = this.createPath(radius, radius, radius - width / 2, 0, 360);
@@ -47,7 +57,11 @@ class TableVisuals extends Component {
 
     return (
       <Animated.View
-        style={{ height:radius * 2, width:radius * 2, transform: [{rotate: this.props.spin}]}}
+        style={[{
+          height:radius * 2,
+          width:radius * 2,
+          transform: [{rotate: this.props.spin}]
+        }, styles.table]}
       >
         <Surface
           width={radius * 2}
@@ -70,6 +84,8 @@ class TableVisuals extends Component {
                 onPress={() => this.props.onPlayerTouch(idx)}
                 style={[{
                   backgroundColor: this.props.playerOrder[idx],
+                  width: playerSize,
+                  height: playerSize,
                   left: centerX - x,
                   top: centerY + y,
                   shadowColor: this.shouldHighlight(idx) ? '#000' : undefined,
@@ -78,7 +94,7 @@ class TableVisuals extends Component {
                   shadowRadius: this.shouldHighlight(idx) ? 3 : undefined
                 }, styles.circle]}
               >
-              <Text style={styles.score}>{this.props.playerScores[this.props.playerOrder[idx]]}</Text>
+              <Text style={[{ fontSize: scoreSize }, styles.score]}>{this.props.playerScores[this.props.playerOrder[idx]]}</Text>
               </TouchableOpacity>
             )
           })
@@ -89,19 +105,18 @@ class TableVisuals extends Component {
 };
 
 const styles = StyleSheet.create({
+  table: {
+    marginLeft: 10
+  },
   circle: {
     borderWidth: 2,
     borderColor:'rgba(0,0,0,0.4)',
     alignItems:'center',
     justifyContent:'center',
-    width:40,
-    height:40,
-    borderRadius:40,
-    marginBottom: 0, //Needs adjusting
+    borderRadius:50,
     position: 'absolute'
   },
   score: {
-    fontSize: 20,
     color: 'black'
   }
 });

@@ -55,25 +55,25 @@ class TableView extends Component {
 
   handleScoreChange() {
     const gameType = minigames[this.props.currentGame.currentGameNumber].completed;
-    if (gameType === 'Winner') {
+    if (gameType === 'Winning') {
       this.props.dispatch(winnerSelected(this.props.players.playerOrder[this.state.selectedPlayerIdx]))
-    } else if (gameType === 'Loser') {
+    } else if (gameType === 'Losing') {
       this.props.dispatch(loserSelected(this.props.players.playerOrder[this.state.selectedPlayerIdx]))
     }
   }
 
   renderCompleteGame() {
     return (
-      <View style={styles.container}>
+      <View style={styles.textContainer}>
         <Text style={styles.title}>
-          Select the {minigames[this.props.currentGame.currentGameNumber].completed} of this Game
+          Select the {minigames[this.props.currentGame.currentGameNumber].completed} Color
         </Text>
 
         <TouchableOpacity
           key='next'
           disabled={this.state.selectedPlayerIdx == undefined}
           onPress={() => this.completeGame()}>
-          <Text style={styles.next}>Next</Text>
+          <Text style={styles.button}>Next</Text>
         </TouchableOpacity>
       </View>
     )
@@ -81,11 +81,13 @@ class TableView extends Component {
 
   renderNextGame() {
     return (
-      <TouchableOpacity
-        key='ready'
-        onPress={() => Actions.gameTitle()}>
-        <Text style={styles.ready}>Ready!</Text>
-      </TouchableOpacity>
+      <View style={styles.textContainer}>
+        <TouchableOpacity
+          key='ready'
+          onPress={() => Actions.gameTitle()}>
+          <Text style={styles.button}>Ready!</Text>
+        </TouchableOpacity>
+      </View>
     )
   }
 
@@ -113,6 +115,7 @@ class TableView extends Component {
       <View style={styles.container}>
         <TableVisuals
           spin={tableState === 'new' ? '0deg' : spin }
+          style={styles.table}
           playerCount={playerCount}
           onPlayerTouch={(playerIdx) => {
             if (tableState === 'complete') {
@@ -137,23 +140,24 @@ class TableView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
+    flexDirection: 'row'
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontSize: 30,
     color: 'black',
     textAlign: 'center',
-    margin: 10,
+    // margin: 10,
+    marginBottom: 20
   },
-  directions: {
-    fontSize: 22,
-    color: 'black',
-    textAlign: 'center',
-    margin: 10,
-  },
-  next: {
+  button: {
     borderWidth:1,
     backgroundColor: 'lightgreen',
     overflow:'hidden', // doesn't work on Android??
@@ -165,17 +169,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10
   },
-  ready: {
-    borderWidth:1,
-    backgroundColor: 'lightgreen',
-    overflow:'hidden', // doesn't work on Android??
-    borderRadius: 5,
-    padding: 5,
-    marginTop: 20,
-    fontSize: 25,
-    color: 'black',
-    textAlign: 'center',
-  }
+
 });
 
 export default connect(({ currentGame, players }) => ({ currentGame, players }))(TableView);

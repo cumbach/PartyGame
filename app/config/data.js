@@ -1,19 +1,19 @@
 export const colors = [
   'red',
-  'orange',
-  'yellow',
   'blue',
+  'yellow',
+  'green',
   'purple',
   'pink',
-  'green',
-  'black',
+  'orange',
+  'white',
   'grey'
 ];
 
 export const minigames = [
   {
     title: 'Categories',
-    completed: 'Loser',
+    completed: 'Losing',
     directions: 'Go around the circle in turn.\nEach player has 3 seconds to name\nan item from the category',
     topics: [
       'Beer Brands',
@@ -30,7 +30,7 @@ export const minigames = [
   },
   {
     title: 'Trivia',
-    completed: 'Winner',
+    completed: 'Winning',
     directions: 'Pick up the phone to hide the answer.\nRead the trivia question aloud.\n The first person to shout out the correct answer wins',
     topics: [
       'What is the capital of New York?',
@@ -57,7 +57,7 @@ export const minigames = [
   },
   {
     title: 'Rhyme',
-    completed: 'Loser',
+    completed: 'Losing',
     directions: 'Each player must say a word\nthat rhymes with the given word',
     topics: [
       'Ball',

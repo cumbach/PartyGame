@@ -14,7 +14,7 @@ class InitialScreen extends Component {
 
         <TouchableOpacity
           key='newGame'
-          onPress={() => Actions.playerSetup()}>
+          onPress={() => Actions.playerNumber()}>
           <Text style={styles.newGame}>New Game</Text>
         </TouchableOpacity>
 

@@ -1,8 +1,9 @@
 import { createActions } from 'redux-actions';
 
 const {
+  setPlayerNumber,
   setCurrentGame,
-  increasePlayerCount,
+  increaseSelectedCount,
   setPlayerScores,
   setPlayerOrder,
   shiftPlayerOrder,
@@ -10,8 +11,9 @@ const {
   winnerSelected,
   loserSelected
 } = createActions(
+  'SET_PLAYER_NUMBER',
   'SET_CURRENT_GAME',
-  'INCREASE_PLAYER_COUNT',
+  'INCREASE_SELECTED_COUNT',
   'SET_PLAYER_SCORES',
   'SET_PLAYER_ORDER',
   'SHIFT_PLAYER_ORDER',
@@ -21,8 +23,9 @@ const {
 );
 
 module.exports = {
+  setPlayerNumber,
   setCurrentGame,
-  increasePlayerCount,
+  increaseSelectedCount,
   setPlayerScores,
   setPlayerOrder,
   shiftPlayerOrder,

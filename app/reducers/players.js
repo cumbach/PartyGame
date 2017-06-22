@@ -1,9 +1,13 @@
 import { handleActions } from 'redux-actions';
 
 export default handleActions({
-  INCREASE_PLAYER_COUNT: (state) => ({
+  SET_PLAYER_NUMBER: (state, action) => ({
     ...state,
-    playerCount: state.playerCount + 1
+    playerCount: action.payload
+  }),
+  INCREASE_SELECTED_COUNT: (state) => ({
+    ...state,
+    selectedCount: state.playerCount + 1
   }),
   SET_PLAYER_SCORES: (state, action) => ({
     ...state,
@@ -43,4 +47,4 @@ export default handleActions({
       playerScores: state.playerScores
     };
   }
-}, { playerCount: 0, playerScores: {}, playerOrder: [] });
+}, { selectedCount: 0, playerCount: 0, playerScores: {}, playerOrder: [] });

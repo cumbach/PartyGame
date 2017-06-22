@@ -6,8 +6,7 @@ export const colors = [
   'purple',
   'pink',
   'orange',
-  'white',
-  'grey'
+  'aqua'
 ];
 
 export const minigames = [

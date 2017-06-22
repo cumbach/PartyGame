@@ -59,7 +59,7 @@ class TableVisuals extends Component {
     } else if (playerCount <= 7) {
       return 80;
     } else {
-      return 60;
+      return 70;
     }
   }
 

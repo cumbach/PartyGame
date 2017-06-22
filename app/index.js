@@ -19,6 +19,7 @@ import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 import InitialScreen from './components/InitialScreen';
+import PlayerNumber   from './components/PlayerNumber';
 import PlayerSetup   from './components/PlayerSetup';
 import TableView     from './components/TableView';
 import GameTitle     from './components/GameTitle';
@@ -45,6 +46,12 @@ class App extends Component {
               component={InitialScreen}
               title="Party Game"
               initial // This sets InitialScreen as the initial screen
+            />
+
+            <Scene
+              key="playerNumber"
+              component={PlayerNumber}
+              hideNavBar
             />
 
             <Scene

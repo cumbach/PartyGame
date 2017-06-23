@@ -5,10 +5,6 @@ export default handleActions({
     ...state,
     playerCount: action.payload
   }),
-  INCREASE_SELECTED_COUNT: (state) => ({
-    ...state,
-    selectedCount: state.playerCount + 1
-  }),
   SET_PLAYER_SCORES: (state, action) => ({
     ...state,
     playerScores: action.payload
@@ -47,4 +43,4 @@ export default handleActions({
       playerScores: state.playerScores
     };
   }
-}, { selectedCount: 0, playerCount: 0, playerScores: {}, playerOrder: [] });
+}, { playerCount: 0, playerScores: {}, playerOrder: [] });

@@ -9,7 +9,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
 import { colors } from '../config/data';
-import { increaseSelectedCount, setPlayerScores, setPlayerOrder  } from '../actions/gameActions';
+import { setPlayerScores, setPlayerOrder  } from '../actions/gameActions';
 
 class PlayerSetup extends Component {
   constructor(props) {
@@ -33,7 +33,6 @@ class PlayerSetup extends Component {
         this.state.playersArray.length < this.props.players.playerCount) {
       this.state.playersArray.push(color);
       this.setState({ playersArray: this.state.playersArray });
-      this.props.dispatch(increaseSelectedCount())
     }
   }
 

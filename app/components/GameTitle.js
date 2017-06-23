@@ -8,22 +8,29 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import { minigames } from '../config/data';
 import { setCurrentGame } from '../actions/gameActions';
 import GameMenu from './GameMenu';
+import { minigames } from '../config/data';
 
 class GameTitle extends Component {
   constructor(props) {
     super(props);
     this.state = { title: '', directions: '' };
   }
+
   componentWillMount() {
-    // Will need checks to make sure that unplayed games still exist
-    var gameChoiceNumber = Math.floor(Math.random() * minigames.length)
-    this.setState({ title: minigames[gameChoiceNumber].title })
-    this.setState({ directions: minigames[gameChoiceNumber].directions})
-    this.props.dispatch(setCurrentGame(gameChoiceNumber));
+    const playableGames = this.props.currentGame.playableGames;
+    const playableGameTitles = Object.keys(playableGames)
+
+    const gameChoice = playableGameTitles[Math.floor(Math.random() * playableGameTitles.length)];
+    const selectedGame = minigames.find(game => game.title === gameChoice)
+
+    this.setState({ title: selectedGame.title });
+    this.setState({ directions: selectedGame.directions });
+
+    this.props.dispatch(setCurrentGame(gameChoice));
   }
+
   render() {
     return (
       <View style={styles.container}>

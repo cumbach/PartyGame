@@ -9,7 +9,8 @@ const {
   shiftTableState,
   winnerSelected,
   loserSelected,
-  restartGame
+  restartGame,
+  topicSelected
 } = createActions(
   'SET_PLAYER_NUMBER',
   'SET_CURRENT_GAME',
@@ -19,7 +20,8 @@ const {
   'SHIFT_TABLE_STATE',
   'WINNER_SELECTED',
   'LOSER_SELECTED',
-  'RESTART_GAME'
+  'RESTART_GAME',
+  'TOPIC_SELECTED'
 );
 
 module.exports = {
@@ -31,5 +33,6 @@ module.exports = {
   shiftTableState,
   winnerSelected,
   loserSelected,
-  restartGame
+  restartGame,
+  topicSelected
 };

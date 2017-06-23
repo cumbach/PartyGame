@@ -62,7 +62,8 @@ class TableView extends Component {
   }
 
   handleScoreChange() {
-    const gameType = minigames[this.props.currentGame.currentGameNumber].completed;
+    const gameType = this.gameCompletedType();
+
     if (gameType === 'Winning') {
       this.props.dispatch(winnerSelected(this.props.players.playerOrder[this.state.selectedPlayerIdx]))
     } else if (gameType === 'Losing') {
@@ -70,11 +71,15 @@ class TableView extends Component {
     }
   }
 
+  gameCompletedType() {
+    return minigames.find(game => game.title === this.props.currentGame.currentGame).completed;
+  }
+
   renderCompleteGame() {
     return (
       <View style={styles.textContainer}>
         <Text style={styles.title}>
-          Select the {minigames[this.props.currentGame.currentGameNumber].completed} Color
+          Select the {this.gameCompletedType()} Color
         </Text>
 
         <TouchableOpacity

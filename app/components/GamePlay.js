@@ -8,8 +8,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import { minigames } from '../config/data';
-import { setCurrentGame, shiftTableState } from '../actions/gameActions';
+import { shiftTableState, topicSelected } from '../actions/gameActions';
 import GameMenu from './GameMenu';
 
 class GamePlay extends Component {
@@ -19,14 +18,19 @@ class GamePlay extends Component {
   }
 
   componentWillMount() {
-    // Will need checks to make sure that unplayed games still exist
-    var currentGameNumber = this.props.currentGame.currentGameNumber;
-    var randomTopic = Math.floor(Math.random() * minigames[currentGameNumber].topics.length)
+    const playableGames = this.props.currentGame.playableGames
+    const topics = playableGames[this.props.currentGame.currentGame];
 
-    this.setState({ topic: minigames[currentGameNumber].topics[randomTopic] })
-    if (minigames[currentGameNumber].subtopics) {
-      this.setState({ subtopic: minigames[currentGameNumber].subtopics[randomTopic] })
+    const randomTopicNumber = Math.floor(Math.random() * topics.length);
+    const randomTopic = topics[randomTopicNumber];
+
+    this.setState({ topic: randomTopic[0] });
+
+    if (randomTopic[1]) {
+      this.setState({ subtopic: randomTopic[1] });
     }
+
+    this.props.dispatch(topicSelected(randomTopicNumber));
   }
 
   render() {

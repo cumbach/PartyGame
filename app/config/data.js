@@ -28,7 +28,17 @@ export const minigames = [
       'Board Games',
       '90s TV Shows',
       'Types of Fish',
-      'Cereal Brands'
+      'Cereal Brands',
+      'Fast Food Chains',
+      'Famous Dead Musicians',
+      'NBA Teams',
+      'NFL Teams',
+      'Baseball Teams',
+      'Movie Directors',
+      'African Countries',
+      'Superheroes',
+      'European Capitals',
+      'Disney Princesses'
     ]
   },
   {
@@ -51,8 +61,17 @@ export const minigames = [
       'Which athlete made the most money in 2017?',
       'Which team won the NBA championships in 2017?',
       'Which website had the most visits in 2017?',
-      'What city has the highest population?',
-      'What occurs at 212 degrees Fahreneheit'
+      'What city has the highest population in the world?',
+      'What occurs at 212 degrees Fahreneheit',
+      'What year did we land on the mood?',
+      'What hotel was behind the Nixon scandal?',
+      'What is the richest soccer club in the world?',
+      'What is the highest grossing movie of all time?',
+      'Who directed Inception?',
+      'Who did Han Solo famously shoot first?',
+      'What did Biff steal in Back to the Future?',
+      'What is the name of the Elven realm in the Lord of the Rings movie?',
+      'What character was played by Carrie-Anne Moss in the Matrix?'
 
     ],
     subtopics: [
@@ -72,7 +91,16 @@ export const minigames = [
       'Golden State Warriors',
       'Google',
       'Tokyo',
-      'Water Boils'
+      'Water Boils',
+      '1969',
+      'Watergate',
+      'Manchester United',
+      'Avatar',
+      'Christopher Nolan',
+      'Guido',
+      'Sports Almanac',
+      'Rivendell',
+      'Trinity'
     ]
   },
   {
@@ -89,7 +117,11 @@ export const minigames = [
       'Drop',
       'Real',
       'Shoe',
-      'Fear'
+      'Fear',
+      'Roll',
+      'Tree',
+      'Feet',
+      'Rock'
     ]
   }
 ]

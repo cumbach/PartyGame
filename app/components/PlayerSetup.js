@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import { colors } from '../config/data';
 import { setPlayerScores, setPlayerOrder  } from '../actions/gameActions';
+import GameMenu from './GameMenu';
 
 class PlayerSetup extends Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class PlayerSetup extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <GameMenu />
 
         <Text style={styles.directions}>
           PASS THE PHONE AROUND TO CHOOSE YOUR COLOR

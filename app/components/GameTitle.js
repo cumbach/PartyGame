@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import { minigames } from '../config/data';
 import { setCurrentGame } from '../actions/gameActions';
+import GameMenu from './GameMenu';
 
 class GameTitle extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class GameTitle extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <GameMenu />
 
         <Text style={styles.title}>
           {this.state.title}

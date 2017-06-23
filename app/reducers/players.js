@@ -1,5 +1,7 @@
 import { handleActions } from 'redux-actions';
 
+const defaultState = { playerCount: 0, playerScores: {}, playerOrder: [] }
+
 export default handleActions({
   SET_PLAYER_NUMBER: (state, action) => ({
     ...state,
@@ -42,5 +44,6 @@ export default handleActions({
       ...state,
       playerScores: state.playerScores
     };
-  }
-}, { playerCount: 0, playerScores: {}, playerOrder: [] });
+  },
+  RESTART_GAME: (state) => (defaultState)
+}, defaultState);

@@ -1,5 +1,9 @@
 import { handleActions } from 'redux-actions';
 
+const defaultState = {
+  currentGame: 0, tableState: 'new'
+};
+
 export default handleActions({
   SET_CURRENT_GAME: (state, gameNumber) => ({
     ...state,
@@ -8,5 +12,6 @@ export default handleActions({
   SHIFT_TABLE_STATE: (state, action) => ({
     ...state,
     tableState: action.payload
-  })
-}, { currentGame: 0, tableState: 'new' });
+  }),
+  RESTART_GAME: (state) => (defaultState)
+}, defaultState);

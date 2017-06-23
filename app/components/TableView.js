@@ -19,6 +19,7 @@ import {
 } from '../actions/gameActions';
 
 import TableVisuals from './TableVisuals';
+import GameMenu from './GameMenu';
 
 class TableView extends Component {
   constructor(props) {
@@ -120,6 +121,8 @@ class TableView extends Component {
 
     return (
       <View style={styles.container}>
+        <GameMenu />
+
         <TableVisuals
           spin={tableState === 'new' ? '0deg' : spin }
           style={styles.table}

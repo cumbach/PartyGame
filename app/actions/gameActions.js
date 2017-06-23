@@ -8,7 +8,8 @@ const {
   shiftPlayerOrder,
   shiftTableState,
   winnerSelected,
-  loserSelected
+  loserSelected,
+  restartGame
 } = createActions(
   'SET_PLAYER_NUMBER',
   'SET_CURRENT_GAME',
@@ -17,7 +18,8 @@ const {
   'SHIFT_PLAYER_ORDER',
   'SHIFT_TABLE_STATE',
   'WINNER_SELECTED',
-  'LOSER_SELECTED'
+  'LOSER_SELECTED',
+  'RESTART_GAME'
 );
 
 module.exports = {
@@ -28,5 +30,6 @@ module.exports = {
   shiftPlayerOrder,
   shiftTableState,
   winnerSelected,
-  loserSelected
+  loserSelected,
+  restartGame
 };

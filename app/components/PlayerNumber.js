@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
   numberBlock: {
     justifyContent: 'center',
     borderRadius: 6,
-    borderWidth: 1,
+    borderWidth: 2,
+    borderColor: 'rgba(0,0,0,0.4)',
     margin: 10,
     width: 140,
     height: 45,

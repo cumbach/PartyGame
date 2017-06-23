@@ -42,7 +42,11 @@ class PlayerSetup extends Component {
   }
 
   circleColor(color) {
-    return this.state.playersArray.indexOf(color) != -1 ? 'grey' : color
+    return this.state.playersArray.indexOf(color) != -1 ? 'white' : color
+  }
+
+  borderColor(color) {
+    return this.state.playersArray.indexOf(color) != -1 ? 'white' : 'rgba(0,0,0,0.4)'
   }
 
   render() {
@@ -61,7 +65,8 @@ class PlayerSetup extends Component {
                   key={`Select${idx + 1}`}
                   onPress={() => this.numberTouch(color)}
                   style={[{
-                    backgroundColor: this.circleColor(color)
+                    backgroundColor: this.circleColor(color),
+                    borderColor: this.borderColor(color)
                   }, styles.colorCircle]}
                 >
                 </TouchableOpacity>
@@ -108,7 +113,7 @@ const styles = StyleSheet.create({
   colorCircle: {
     justifyContent: 'center',
     borderRadius: 50,
-    borderWidth: 1,
+    borderWidth: 2,
     margin: 10,
     width: 100,
     height: 100,

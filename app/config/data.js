@@ -47,7 +47,7 @@ export const minigames = [
       'Who is the American Secretary of State?',
       'How many squares are there on a chess board?',
       'Which historical prince was used in Bram Stoker\'s famous novel?',
-      'Which actor was also known at "The Tramp"?',
+      'Which actor was also known as "The Tramp"?',
       'Which athlete made the most money in 2017?',
       'Which team won the NBA championships in 2017?',
       'Which website had the most visits in 2017?',

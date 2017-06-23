@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   newGame: {
-    borderWidth:1,
+    borderWidth:2,
+    borderColor: 'rgba(0,0,0,0.4)',
     backgroundColor: 'lightgreen',
     overflow:'hidden', // doesn't work on Android??
     borderRadius: 5,

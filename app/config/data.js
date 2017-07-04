@@ -42,13 +42,30 @@ export const minigames = [
     ]
   },
   {
+    title: 'Taboo',
+    completed: 'Winning',
+    directions: 'The dealer will give hints to everyone for the secret word.\nYou cannot say words that are in the "excluded" list.\nThe first person to say the word wins the round.',
+    topics: [
+      'Baseball',
+      'Sunset',
+      'Chair',
+      'Firework'
+    ],
+    subtopics: [
+      'Homerun, Strike, Pitch, Bat, Glove',
+      'Sun, Evening, Sky',
+      'Seat, Sit, Recliner',
+      'July, Celebrate, Explosion, Colorful'
+    ]
+  },
+  {
     title: 'Trivia',
     completed: 'Winning',
     directions: 'Pick up the phone to hide the answer.\nRead the trivia question aloud.\n The first person to shout out the correct answer wins',
     topics: [
       'What is the capital of New York?',
       'Who is the Prime Minister of Canada?',
-      'What year was JFK killed?',
+      'What famous figure was killed on November 22, 1963?',
       'What is the deadliest animal in Africa?',
       'What is Harry Potter\'s aunt\'s name?',
       'What is the richest country in Africa?',
@@ -68,8 +85,8 @@ export const minigames = [
       'What is the richest soccer club in the world?',
       'What is the highest grossing movie of all time?',
       'Who directed Inception?',
-      'Who did Han Solo famously shoot first?',
-      'What did Biff steal in Back to the Future?',
+      'What is Darth Vader\'s first name?',
+      'In what movie did Biff steal a sports almanac?'
       'What is the name of the Elven realm in the Lord of the Rings movie?',
       'What character was played by Carrie-Anne Moss in the Matrix?'
 
@@ -77,7 +94,7 @@ export const minigames = [
     subtopics: [
       'Albany',
       'Justin Trudeau',
-      '1963',
+      'John F Kennedy',
       'The Hippopotamus',
       'Petunia',
       'Nigeria',
@@ -97,8 +114,8 @@ export const minigames = [
       'Manchester United',
       'Avatar',
       'Christopher Nolan',
-      'Guido',
-      'Sports Almanac',
+      'Anakin',
+      'Back to the Future',
       'Rivendell',
       'Trinity'
     ]
@@ -122,6 +139,18 @@ export const minigames = [
       'Tree',
       'Feet',
       'Rock'
+    ]
+  },
+  {
+    title: 'Mimic the Dealer',
+    completed: 'Losing',
+    directions: 'The dealer will make the given gesture.\nThe last person to make the gesture loses.',
+    topics: [
+      'Both hands on your head',
+      'Grab both ears',
+      'Rock On',
+      'Fist in the air',
+      'Bunny ears'
     ]
   }
 ]

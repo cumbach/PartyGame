@@ -66,16 +66,16 @@ export const minigames = [
       'What is the capital of New York?',
       'Who is the Prime Minister of Canada?',
       'What famous figure was killed on November 22, 1963?',
-      'What is the deadliest animal in Africa?',
+      'What is the deadliest mammal in Africa?',
       'What is Harry Potter\'s aunt\'s name?',
       'What is the richest country in Africa?',
-      'What is the name of Ross\' first wife in Friends?',
+      'Who did Chandler marry in Friends?',
       'What is the scientific term for -273 degrees Celsius?',
       'Who is the American Secretary of State?',
       'How many squares are there on a chess board?',
       'Which historical prince was used in Bram Stoker\'s famous novel?',
       'Which actor was also known as "The Tramp"?',
-      'Which athlete made the most money in 2017?',
+      'Which soccer player made the most money in 2017?',
       'Which team won the NBA championships in 2017?',
       'Which website had the most visits in 2017?',
       'What city has the highest population in the world?',
@@ -86,10 +86,9 @@ export const minigames = [
       'What is the highest grossing movie of all time?',
       'Who directed Inception?',
       'What is Darth Vader\'s first name?',
-      'In what movie did Biff steal a sports almanac?'
+      'In what movie did Biff steal a sports almanac?',
       'What is the name of the Elven realm in the Lord of the Rings movie?',
       'What character was played by Carrie-Anne Moss in the Matrix?'
-
     ],
     subtopics: [
       'Albany',
@@ -98,7 +97,7 @@ export const minigames = [
       'The Hippopotamus',
       'Petunia',
       'Nigeria',
-      'Carol',
+      'Monica',
       'Absolute Zero',
       'Rex Tillerson',
       '64',
@@ -148,7 +147,7 @@ export const minigames = [
     topics: [
       'Both hands on your head',
       'Grab both ears',
-      'Rock On',
+      '"Rock On" Hand Symbol (pointer and pinky fingers up)',
       'Fist in the air',
       'Bunny ears'
     ]

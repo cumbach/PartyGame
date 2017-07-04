@@ -22,7 +22,11 @@ class GameTitle extends Component {
     const playableGames = this.props.currentGame.playableGames;
     const playableGameTitles = Object.keys(playableGames)
 
+    // FOR TESTING: JUST SET SPECIFIC GAME TYPE
     const gameChoice = playableGameTitles[Math.floor(Math.random() * playableGameTitles.length)];
+    // const gameChoice = playableGameTitles[2];
+
+
     const selectedGame = minigames.find(game => game.title === gameChoice)
 
     this.setState({ title: selectedGame.title });

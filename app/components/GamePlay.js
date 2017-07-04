@@ -18,7 +18,11 @@ class GamePlay extends Component {
   }
 
   componentWillMount() {
-    const playableGames = this.props.currentGame.playableGames
+    this.createGameTopic();
+  }
+
+  createGameTopic(){
+    const playableGames = this.props.currentGame.playableGames;
     const topics = playableGames[this.props.currentGame.currentGame];
 
     const randomTopicNumber = Math.floor(Math.random() * topics.length);
@@ -31,9 +35,22 @@ class GamePlay extends Component {
     }
 
     this.props.dispatch(topicSelected(randomTopicNumber));
+
+  }
+
+  renderSkipButton(){
+    if (this.props.currentGame.currentGame === 'Trivia') {
+      return <TouchableOpacity
+        key='skip'
+        onPress={() => {this.createGameTopic()}}>
+        <Text style={styles.end}>Skip Question ></Text>
+      </TouchableOpacity>
+    }
   }
 
   render() {
+
+
     return (
       <View style={styles.container}>
         <GameMenu />
@@ -46,6 +63,7 @@ class GamePlay extends Component {
           {this.state.subtopic}
         </Text>
 
+        {this.renderSkipButton()}
 
         <TouchableOpacity
           key='end'
@@ -81,6 +99,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 30,
 
+  },
+  skip: {
+    borderWidth:1,
+    backgroundColor: 'lightgreen',
+    overflow:'hidden', // maybe doesn't work on Android??
+    borderRadius: 5,
+    padding: 10,
+    marginTop: 0, //Needs adjusting
+    fontSize: 34,
+    color: 'black',
+    textAlign: 'center',
+    margin: 10,
   },
   end: {
     borderWidth:1,

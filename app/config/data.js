@@ -151,5 +151,25 @@ export const minigames = [
       'Fist in the air',
       'Bunny ears'
     ]
-  }
+  },
+  {
+    title: 'Drive',
+    completed: 'Losing',
+    directions: 'Everyone puts their arms up to imitate driving a car.\nStarting with the dealer, players can either shout "Vroom" and turn their "wheel" to send gameplay to the player on their right, or "Skert" to pass to the player on their left.',
+    topics: [
+      'Start your engines!',
+      'Begin Driving!',
+      'Vroom Vroom!'
+    ]
+  },
+  {
+    title: 'Going to the Moon',
+    completed: 'Losing',
+    directions: 'The dealer starts the game by saying "I\'m going to the moon, and I\'m bringing (e.g.) an apple."\nThe next player would then say "I\'m going to the moon, and I\'m bringing an apple and a book."\nItems must follow alphabetical order and players must remember and list all items said before them.',
+    topics: [
+      'Begin!',
+      'Begin!',
+    ]
+  },
+
 ]

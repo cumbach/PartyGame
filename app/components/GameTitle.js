@@ -23,8 +23,8 @@ class GameTitle extends Component {
     const playableGameTitles = Object.keys(playableGames)
 
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
-    // const gameChoice = playableGameTitles[2];
-    const gameChoice = playableGameTitles[Math.floor(Math.random() * playableGameTitles.length)];
+    const gameChoice = playableGameTitles[6];
+    // const gameChoice = playableGameTitles[Math.floor(Math.random() * playableGameTitles.length)];
 
     const selectedGame = minigames.find(game => game.title === gameChoice)
 

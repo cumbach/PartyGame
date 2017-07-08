@@ -23,19 +23,25 @@ class GamePlay extends Component {
 
   createGameTopic(){
     const playableGames = this.props.currentGame.playableGames;
-    const topics = playableGames[this.props.currentGame.currentGame];
+    this.topics = playableGames[this.props.currentGame.currentGame];
 
-    const randomTopicNumber = Math.floor(Math.random() * topics.length);
-    const randomTopic = topics[randomTopicNumber];
+    const rndNum = Math.floor(Math.random() * this.topics.length);
+    const randomTopic = this.topics[rndNum];
 
-    this.setState({ topic: randomTopic[0] });
+    // check if multipleChoices enabled for title
+    if (randomTopic[2]) {
+      this.setState({ topic: [this.topics[rndNum], this.topics[(rndNum+1)%this.topics.length], this.topics[(rndNum+2)%this.topics.length], ["Create your Own"]] })
+      this.randomNum = rndNum;
 
-    if (randomTopic[1]) {
-      this.setState({ subtopic: randomTopic[1] });
+    } else {
+
+      this.setState({ topic: [randomTopic[0]] });
+      this.enableCompleteButton = true;
+      if (randomTopic[1]) {
+        this.setState({ subtopic: randomTopic[1] });
+      }
+      this.props.dispatch(topicSelected(rndNum));
     }
-
-    this.props.dispatch(topicSelected(randomTopicNumber));
-
   }
 
   renderSkipButton(){
@@ -47,17 +53,49 @@ class GamePlay extends Component {
       </TouchableOpacity>
     }
   }
+  selectTopic(topic, idx) {
+    this.setState({ topic: topic[0] })
+
+    // doesnt dispatch for "Create your own"
+    if (idx != 3) {
+      this.props.dispatch(topicSelected((this.randomNum + idx) % this.topics.length));
+    }
+    this.enableCompleteButton = true;
+  }
+
+  renderTopic() {
+
+    // Some games, like Categories, have multiple choices for topics
+    if (typeof this.state.topic === 'object' && this.state.topic.length > 1) {
+      return this.state.topic.map((topic, idx) => {
+        return (
+          <TouchableOpacity
+            key={'choice' + idx}
+            onPress={() => {
+              this.selectTopic(topic, idx);
+            }}
+          >
+            <Text style={styles.choice}>{topic[0]}</Text>
+          </TouchableOpacity>
+        )
+      })
+
+    } else {
+
+      return (
+        <Text style={styles.topic}>
+          {this.state.topic}
+        </Text>
+      )
+    }
+  }
 
   render() {
-
-
     return (
       <View style={styles.container}>
         <GameMenu />
 
-        <Text style={styles.topic}>
-          {this.state.topic}
-        </Text>
+        {this.renderTopic()}
 
         <Text style={styles.subtopic}>
           {this.state.subtopic}
@@ -72,7 +110,10 @@ class GamePlay extends Component {
             Actions.tableView();
           }}
         >
-          <Text style={styles.end}>Completed</Text>
+          <Text style={[{
+              display: this.enableCompleteButton ? 'flex' : 'none'
+              }, styles.end]}>Completed
+          </Text>
         </TouchableOpacity>
 
       </View>
@@ -105,6 +146,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgreen',
     overflow:'hidden', // maybe doesn't work on Android??
     borderRadius: 5,
+    padding: 10,
+    marginTop: 0, //Needs adjusting
+    fontSize: 34,
+    color: 'black',
+    textAlign: 'center',
+    margin: 10,
+  },
+  choice: {
+    borderWidth:1,
+    backgroundColor: '#9BACFF',
+    overflow:'hidden', // maybe doesn't work on Android??
+    borderRadius: 5,
+    width: 400,
     padding: 10,
     marginTop: 0, //Needs adjusting
     fontSize: 34,

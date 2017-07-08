@@ -5,7 +5,7 @@ const defaultPlayableGames = () => {
   const topics = {};
   minigames.forEach((game) => {
     topics[game.title] = game.topics.map((topic, idx) => {
-      return [topic, game.subtopics ? game.subtopics[idx] : undefined];
+      return [topic, game.subtopics ? game.subtopics[idx] : undefined, game.multipleChoice];
     });
   });
 

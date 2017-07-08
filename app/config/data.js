@@ -14,6 +14,7 @@ export const minigames = [
     title: 'Categories',
     completed: 'Losing',
     directions: 'Go around the circle in turn.\nEach player has 3 seconds to name\nan item from the category',
+    multipleChoice: true,
     topics: [
       'Beer Brands',
       'Dog Breeds',
@@ -38,30 +39,39 @@ export const minigames = [
       'African Countries',
       'Superheroes',
       'European Capitals',
-      'Disney Princesses'
+      'Disney Princesses',
+      'Flowers',
+      'Types of Candy',
+      'European Countries',
+      'Private Colleges',
+      'Celebrity Couples'
     ]
   },
   {
     title: 'Taboo',
     completed: 'Winning',
-    directions: 'The dealer will give hints to everyone for the secret word.\nYou cannot say words that are in the "excluded" list.\nThe first person to say the word wins the round.',
+    directions: 'You will give hints to everyone for the secret word.\nYou cannot say rhyming words or words that are in the "excluded" list.\nThe first person to shout out the correct answer wins',
     topics: [
       'Baseball',
       'Sunset',
       'Chair',
-      'Firework'
+      'Firework',
+      'Kiss',
+      'Television'
     ],
     subtopics: [
-      'Homerun, Strike, Pitch, Bat, Glove',
-      'Sun, Evening, Sky',
-      'Seat, Sit, Recliner',
-      'July, Celebrate, Explosion, Colorful'
+      'Excluded: Homerun, Strike, Pitch, Bat, Glove',
+      'Excluded: Sun, Evening, Sky',
+      'Excluded: Seat, Sit, Recliner',
+      'Excluded: July, Celebrate, Explosion, Colorful',
+      'Excluded: Make-Out, Lips, Tongue, French', 'Hug',
+      'Excluded: TV, Watch, Movie, Netflix',
     ]
   },
   {
     title: 'Trivia',
     completed: 'Winning',
-    directions: 'Pick up the phone to hide the answer.\nRead the trivia question aloud.\n The first person to shout out the correct answer wins',
+    directions: 'Pick up the phone to hide the answer.\nRead the trivia question aloud.\nThe first person to shout out the correct answer wins',
     topics: [
       'What is the capital of New York?',
       'Who is the Prime Minister of Canada?',
@@ -78,7 +88,7 @@ export const minigames = [
       'Which soccer player made the most money in 2017?',
       'Which team won the NBA championships in 2017?',
       'Which website had the most visits in 2017?',
-      'What city has the highest population in the world?',
+      'What city has the largest population in the world?',
       'What occurs at 212 degrees Fahreneheit',
       'What year did we land on the mood?',
       'What hotel was behind the Nixon scandal?',
@@ -88,7 +98,12 @@ export const minigames = [
       'What is Darth Vader\'s first name?',
       'In what movie did Biff steal a sports almanac?',
       'What is the name of the Elven realm in the Lord of the Rings movie?',
-      'What character was played by Carrie-Anne Moss in the Matrix?'
+      'What character was played by Carrie-Anne Moss in the Matrix?',
+      'Who is the highest paid TV actress?',
+      'What is the fourth largest state by size in the US?',
+      'What is the second most populated state in the US?',
+      'What is Tom Cruise\'s highest grossing movie?',
+      'What country shares a border with the most other countries?'
     ],
     subtopics: [
       'Albany',
@@ -116,7 +131,12 @@ export const minigames = [
       'Anakin',
       'Back to the Future',
       'Rivendell',
-      'Trinity'
+      'Trinity',
+      'Sofia Vergara',
+      'Montana',
+      'Texas',
+      'Top Gun',
+      'China'
     ]
   },
   {
@@ -137,19 +157,21 @@ export const minigames = [
       'Roll',
       'Tree',
       'Feet',
-      'Rock'
+      'Rock',
+      'Seek'
     ]
   },
   {
     title: 'Mimic the Dealer',
     completed: 'Losing',
-    directions: 'The dealer will make the given gesture.\nThe last person to make the gesture loses.',
+    directions: 'Make the given gesture.\nThe last person to make the gesture loses.',
     topics: [
       'Both hands on your head',
       'Grab both ears',
       '"Rock On" Hand Symbol (pointer and pinky fingers up)',
       'Fist in the air',
-      'Bunny ears'
+      'Bunny ears',
+      'Pray'
     ]
   },
   {
@@ -157,9 +179,9 @@ export const minigames = [
     completed: 'Losing',
     directions: 'Everyone puts their arms up to imitate driving a car.\nStarting with the dealer, players can either shout "Vroom" and turn their "wheel" to send gameplay to the player on their right, or "Skert" to pass to the player on their left.',
     topics: [
-      'Start your engines!',
       'Begin Driving!',
-      'Vroom Vroom!'
+      'Begin Driving!',
+      'Begin Driving!'
     ]
   },
   {

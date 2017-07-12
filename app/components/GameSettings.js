@@ -15,6 +15,8 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { minigames } from '../config/data';
 import { removeGameType, addGameType } from '../actions/gameActions';
+import reducers from '../reducers';
+
 
 class GameSettings extends Component {
   constructor(props) {
@@ -58,16 +60,18 @@ class GameSettings extends Component {
     }.bind(this))
   }
   removeGame(gameType) {
-    // var removed = this.props.currentGame.removedGames;
-    // removed[gameType] = this.props.currentGame.playableGames[gameType];
-    // this.setState({ "removedGames": removed });
-    this.props.dispatch(removeGameType(gameType))
+    this.props.dispatch(removeGameType(gameType));
+    console.log(this.props.routes.scene.name);
+    console.log(gameType);
+    console.log(this.props.currentGame.currentGame)
+    if (this.props.routes.scene.name === "gameTitle" &&
+        this.props.currentGame.currentGame === gameType) {
+      Actions.tableView();
+    }
   }
   addGame(gameType) {
-    // var removed = this.props.currentGame.removedGames;
-    this.props.dispatch(addGameType(gameType))
-    // delete removed[gameType];
-    // this.setState({ "removedGames": removed });
+    this.props.dispatch(addGameType(gameType));
+    // Actions.tableView();
   }
   render() {
     return (
@@ -97,4 +101,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(({ currentGame }) => ({ currentGame }))(GameSettings);
+export default connect(({ currentGame, routes }) => ({ currentGame, routes }))(GameSettings);

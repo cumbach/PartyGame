@@ -42,7 +42,8 @@ export const minigames = [
       'Disney Princesses',
       'Flowers',
       'Types of Candy',
-      'European Countries',
+      'Asian Countries',
+      'South American Countries',
       'Private Colleges',
       'Celebrity Couples'
     ]
@@ -90,7 +91,7 @@ export const minigames = [
       'Which website had the most visits in 2017?',
       'What city has the largest population in the world?',
       'What occurs at 212 degrees Fahreneheit',
-      'What year did we land on the mood?',
+      'What year did we land on the moon?',
       'What hotel was behind the Nixon scandal?',
       'What is the richest soccer club in the world?',
       'What is the highest grossing movie of all time?',
@@ -162,22 +163,21 @@ export const minigames = [
     ]
   },
   {
-    title: 'Mimic the Dealer',
+    title: 'Simon Says',
     completed: 'Losing',
-    directions: 'Make the given gesture.\nThe last person to make the gesture loses.',
+    directions: 'Shout out "Simon says" and name a gesture.\nThe last player to make the gesture loses.',
     topics: [
-      'Both hands on your head',
-      'Grab both ears',
-      '"Rock On" Hand Symbol (pointer and pinky fingers up)',
-      'Fist in the air',
-      'Bunny ears',
-      'Pray'
+      'Play!',
+      'Play!',
+      'Play!',
+      'Play!',
+      'Play!',
     ]
   },
   {
     title: 'Drive',
     completed: 'Losing',
-    directions: 'Everyone puts their arms up to imitate driving a car.\nStarting with the dealer, players can either shout "Vroom" and turn their "wheel" to send gameplay to the player on their right, or "Skert" to pass to the player on their left.',
+    directions: 'Everyone puts their hands up to imitate driving a car.\nStart gameplay by shouting "Vroom" and turning your hands to the left or right. The "driver" is passed to the player next to you in that direction. The "driver" can either say "Vroom" and turn their hands to continue passing to the same direction, or "Skert", passing the "driver" in the opposite direction.',
     topics: [
       'Begin Driving!',
       'Begin Driving!',

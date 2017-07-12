@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import { shiftTableState, topicSelected } from '../actions/gameActions';
 import GameMenu from './GameMenu';
+import GameSettings from './GameSettings';
 
 class GamePlay extends Component {
   constructor(props) {
@@ -94,6 +95,7 @@ class GamePlay extends Component {
     return (
       <View style={styles.container}>
         <GameMenu />
+        <GameSettings />
 
         {this.renderTopic()}
 

@@ -16,7 +16,8 @@ const defaultState = () => {
   return {
     currentGame: 'Categories',
     tableState: 'new',
-    playableGames: defaultPlayableGames()
+    playableGames: defaultPlayableGames(),
+    removedGames: {}
   };
 };
 
@@ -30,6 +31,31 @@ export default handleActions({
     tableState: action.payload
   }),
   RESTART_GAME: (state) => (defaultState()),
+  REMOVE_GAME_TYPE: (state, action) => {
+    let playableGames = state.playableGames;
+    let removedGames = state.removedGames;
+
+    removedGames[action.payload] = playableGames[action.payload];
+    delete playableGames[action.payload];
+
+
+    return {
+      ...state,
+      playableGames
+    }
+  },
+  ADD_GAME_TYPE: (state, action) => {
+    let playableGames = state.playableGames;
+    let removedGames = state.removedGames;
+
+    playableGames[action.payload] = removedGames[action.payload];
+    delete removedGames[action.payload];
+
+    return {
+      ...state,
+      playableGames
+    }
+  },
   TOPIC_SELECTED: (state, action) => {
     const currentGame = state.currentGame;
     const topicNumber = action.payload;

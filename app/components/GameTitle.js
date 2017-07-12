@@ -9,8 +9,11 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
 import { setCurrentGame } from '../actions/gameActions';
-import GameMenu from './GameMenu';
 import { minigames } from '../config/data';
+
+import GameMenu from './GameMenu';
+import GameSettings from './GameSettings';
+
 
 class GameTitle extends Component {
   constructor(props) {
@@ -23,7 +26,7 @@ class GameTitle extends Component {
     const playableGameTitles = Object.keys(playableGames)
 
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
-    // const gameChoice = playableGameTitles[0];
+    // const gameChoice = playableGameTitles[5];
     const gameChoice = playableGameTitles[Math.floor(Math.random() * playableGameTitles.length)];
 
     const selectedGame = minigames.find(game => game.title === gameChoice)
@@ -39,10 +42,9 @@ class GameTitle extends Component {
   }
 
   renderDirections() {
-    if (this.state.displayBlind && (this.state.title === 'Trivia' || this.state.title === "Mimic the Dealer")) {
+    if (this.state.displayBlind && (this.state.title === 'Trivia' || this.state.title === "Simon Says")) {
       return (
         <View>
-          <GameMenu/>
 
           <Text style={[styles.title, styles.blindTitle]}>
             BLIND GAME!
@@ -65,7 +67,6 @@ class GameTitle extends Component {
 
       return (
         <View>
-          <GameMenu/>
 
           <Text style={styles.title}>
             {this.state.title}
@@ -90,6 +91,8 @@ class GameTitle extends Component {
     return (
       <View style={styles.container}>
         {this.renderDirections()}
+        <GameMenu/>
+        <GameSettings />
       </View>
     );
   }
@@ -100,7 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
   },
   title: {
     fontSize: 30,

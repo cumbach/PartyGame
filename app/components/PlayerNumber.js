@@ -9,8 +9,10 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
 import { setPlayerNumber  } from '../actions/gameActions';
-import GameMenu from './GameMenu';
 import { restartGame } from '../actions/gameActions';
+
+import GameMenu from './GameMenu';
+import GameSettings from './GameSettings';
 
 class PlayerNumber extends Component {
   constructor(props) {
@@ -20,7 +22,7 @@ class PlayerNumber extends Component {
 
   completePlayerNumber() {
     if (this.state.highlightIdx != null) {
-      this.props.dispatch(restartGame());
+      // this.props.dispatch(restartGame());
       this.props.dispatch(setPlayerNumber(this.state.highlightIdx + 1));
       Actions.playerSetup();
     }
@@ -38,6 +40,7 @@ class PlayerNumber extends Component {
     return (
       <View style={styles.container}>
         <GameMenu />
+        <GameSettings />
 
         <Text style={styles.directions}>
           CHOOSE THE NUMBER OF PLAYERS

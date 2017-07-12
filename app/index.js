@@ -25,6 +25,8 @@ import PlayerSetup   from './components/PlayerSetup';
 import TableView     from './components/TableView';
 import GameTitle     from './components/GameTitle';
 import GamePlay      from './components/GamePlay';
+import GameSettings  from './components/GameSettings';
+
 
 const RouterWithRedux = connect()(Router);
 
@@ -79,6 +81,7 @@ class App extends Component {
                 component={GamePlay}
                 hideNavBar
               />
+
             </Scene>
           </RouterWithRedux>
         </Provider>

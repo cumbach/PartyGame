@@ -61,9 +61,6 @@ class GameSettings extends Component {
   }
   removeGame(gameType) {
     this.props.dispatch(removeGameType(gameType));
-    console.log(this.props.routes.scene.name);
-    console.log(gameType);
-    console.log(this.props.currentGame.currentGame)
     if (this.props.routes.scene.name === "gameTitle" &&
         this.props.currentGame.currentGame === gameType) {
       Actions.tableView();
@@ -71,7 +68,6 @@ class GameSettings extends Component {
   }
   addGame(gameType) {
     this.props.dispatch(addGameType(gameType));
-    // Actions.tableView();
   }
   render() {
     return (
@@ -80,7 +76,7 @@ class GameSettings extends Component {
           <MenuTrigger>
             <Image
               source={require('../config/img/gear.png')}
-              style={{ width: 40, height: 40, zIndex: 2 }}
+              style={{ width: 40, height: 40}}
             />
           </MenuTrigger>
           <MenuOptions>

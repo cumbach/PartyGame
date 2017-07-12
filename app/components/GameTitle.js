@@ -18,7 +18,7 @@ import GameSettings from './GameSettings';
 class GameTitle extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: '', directions: '', displayBlind: true };
+    this.state = { selectedGame: {}, displayBlind: true };
   }
 
   componentWillMount() {
@@ -31,8 +31,7 @@ class GameTitle extends Component {
 
     const selectedGame = minigames.find(game => game.title === gameChoice)
 
-    this.setState({ title: selectedGame.title });
-    this.setState({ directions: selectedGame.directions });
+    this.setState({ selectedGame: selectedGame })
 
     this.props.dispatch(setCurrentGame(gameChoice));
   }
@@ -42,15 +41,15 @@ class GameTitle extends Component {
   }
 
   renderDirections() {
-    if (this.state.displayBlind && (this.state.title === 'Trivia' || this.state.title === "Simon Says")) {
+    // Check is this game requires bringing the phone up off the table (Blind game)
+    if (this.state.displayBlind && (this.state.selectedGame.title === 'Trivia' || this.state.selectedGame.title === "Simon Says")) {
       return (
         <View>
-
           <Text style={[styles.title, styles.blindTitle]}>
             BLIND GAME!
           </Text>
 
-          <Text style={styles.directions}>
+          <Text style={[{fontSize: 22}, styles.directions]}>
             Pick up the phone so that only the dealer can read the screen.
           </Text>
 
@@ -59,7 +58,6 @@ class GameTitle extends Component {
             onPress={() => this.blindPlayPressed()}>
             <Text style={styles.start}>Go!</Text>
           </TouchableOpacity>
-
         </View>
       )
 
@@ -67,13 +65,11 @@ class GameTitle extends Component {
 
       return (
         <View>
-
           <Text style={styles.title}>
-            {this.state.title}
+            {this.state.selectedGame.title}
           </Text>
-
-          <Text style={styles.directions}>
-            {this.state.directions}
+          <Text style={[styles.directions, this.state.selectedGame.style]}>
+            {this.state.selectedGame.directions}
           </Text>
 
           <TouchableOpacity
@@ -81,13 +77,13 @@ class GameTitle extends Component {
             onPress={() => Actions.gamePlay()}>
             <Text style={styles.start}>Start!</Text>
           </TouchableOpacity>
-
         </View>
       );
     }
   }
 
   render() {
+    console.log('render')
     return (
       <View style={styles.container}>
         {this.renderDirections()}

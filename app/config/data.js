@@ -14,6 +14,7 @@ export const minigames = [
     title: 'Categories',
     completed: 'Losing',
     directions: 'Go around the circle in turn.\nEach player has 3 seconds to name\nan item from the category',
+    style: {},
     multipleChoice: true,
     topics: [
       'Beer Brands',
@@ -52,6 +53,7 @@ export const minigames = [
     title: 'Taboo',
     completed: 'Winning',
     directions: 'You will give hints to everyone for the secret word.\nYou cannot say rhyming words or words that are in the "excluded" list.\nThe first person to shout out the correct answer wins',
+    style: {fontSize: 20},
     topics: [
       'Baseball',
       'Sunset',
@@ -73,6 +75,7 @@ export const minigames = [
     title: 'Trivia',
     completed: 'Winning',
     directions: 'Pick up the phone to hide the answer.\nRead the trivia question aloud.\nThe first person to shout out the correct answer wins',
+    style: {},
     topics: [
       'What is the capital of New York?',
       'Who is the Prime Minister of Canada?',
@@ -91,7 +94,7 @@ export const minigames = [
       'Which website had the most visits in 2017?',
       'What city has the largest population in the world?',
       'What occurs at 212 degrees Fahreneheit',
-      'What year did we land on the moon?',
+      'What landmark American achievement occurred in 1969?',
       'What hotel was behind the Nixon scandal?',
       'What is the richest soccer club in the world?',
       'What is the highest grossing movie of all time?',
@@ -124,7 +127,7 @@ export const minigames = [
       'Google',
       'Tokyo',
       'Water Boils',
-      '1969',
+      'Landed on the Moon',
       'Watergate',
       'Manchester United',
       'Avatar',
@@ -144,6 +147,7 @@ export const minigames = [
     title: 'Rhyme',
     completed: 'Losing',
     directions: 'Each player must say a word\nthat rhymes with the given word',
+    style: {},
     topics: [
       'Ball',
       'Floor',
@@ -166,6 +170,7 @@ export const minigames = [
     title: 'Simon Says',
     completed: 'Losing',
     directions: 'Shout out "Simon says" and name a gesture.\nThe last player to make the gesture loses.',
+    style: {},
     topics: [
       'Play!',
       'Play!',
@@ -177,7 +182,8 @@ export const minigames = [
   {
     title: 'Drive',
     completed: 'Losing',
-    directions: 'Everyone puts their hands up to imitate driving a car.\nStart gameplay by shouting "Vroom" and turning your hands to the left or right. The "driver" is passed to the player next to you in that direction. The "driver" can either say "Vroom" and turn their hands to continue passing to the same direction, or "Skert", passing the "driver" in the opposite direction.',
+    directions: 'Everyone puts their hands up to imitate driving a car.\n\nStart gameplay by shouting "Vroom" and turning your hands to the left or right.\nThe "driver" is passed to the player next to you in that direction.\n\nThe "driver" can either say "Vroom" and turn their hands to continue passing to the same direction, or "Skert", passing the "driver" in the opposite direction.',
+    style: {fontSize: 18, textAlign: 'left'},
     topics: [
       'Begin Driving!',
       'Begin Driving!',
@@ -187,7 +193,8 @@ export const minigames = [
   {
     title: 'Going to the Moon',
     completed: 'Losing',
-    directions: 'The dealer starts the game by saying "I\'m going to the moon, and I\'m bringing (e.g.) an apple."\nThe next player would then say "I\'m going to the moon, and I\'m bringing an apple and a book."\nItems must follow alphabetical order and players must remember and list all items said before them.',
+    directions: 'Start the game by saying:\n"I\'m going to the moon, and I\'m bringing (e.g.) an apple."\nThe next player would then say:\n"I\'m going to the moon, and I\'m bringing an apple and a radio."\n\nPlayers must remember and list all items said before them, as well as their own item, without pausing for more than 3 seconds.',
+    style: {},
     topics: [
       'Begin!',
       'Begin!',

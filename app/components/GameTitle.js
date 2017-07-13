@@ -26,15 +26,15 @@ class GameTitle extends Component {
     const currentGameTitle = this.props.currentGame.currentGame;
     const currentGameIdx = Object.keys(playableGames).findIndex(title => title === currentGameTitle);
     const playableGameTitles = Object.keys(playableGames);
-    playableGameTitles.splice(currentGameIdx, 1);
+    if (playableGameTitles.length > 1) {
+      playableGameTitles.splice(currentGameIdx, 1);
+    }
 
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
     // const gameChoice = playableGameTitles[5];
     const gameChoiceIdx = Math.floor(Math.random() * playableGameTitles.length);
     const gameChoice = playableGameTitles[gameChoiceIdx];
-
     const selectedGame = minigames.find(game => game.title === gameChoice)
-
     this.setState({ selectedGame: selectedGame });
 
     this.props.dispatch(setCurrentGame(gameChoice));
@@ -45,8 +45,9 @@ class GameTitle extends Component {
   }
 
   renderDirections() {
+    console.log(this.state)
     // Check is this game requires bringing the phone up off the table (Blind game)
-    if (this.state.displayBlind && (this.state.selectedGame.title === 'Trivia' || this.state.selectedGame.title === "Simon Says")) {
+    if (this.state.displayBlind && (this.state.selectedGame.title === 'Taboo' || this.state.selectedGame.title === 'Trivia' || this.state.selectedGame.title === "Simon Says")) {
       return (
         <View>
           <Text style={[styles.title, styles.blindTitle]}>

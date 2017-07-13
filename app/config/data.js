@@ -67,7 +67,7 @@ export const minigames = [
       'Excluded: Sun, Evening, Sky',
       'Excluded: Seat, Sit, Recliner',
       'Excluded: July, Celebrate, Explosion, Colorful',
-      'Excluded: Make-Out, Lips, Tongue, French', 'Hug',
+      'Excluded: Make-Out, Lips, Tongue, French, Hug',
       'Excluded: TV, Watch, Movie, Netflix',
     ]
   },

@@ -23,15 +23,21 @@ class GameTitle extends Component {
 
   componentWillMount() {
     const playableGames = this.props.currentGame.playableGames;
-    const playableGameTitles = Object.keys(playableGames)
+    const currentGameTitle = this.props.currentGame.currentGame;
+    console.log(currentGameTitle);
+    const currentGameIdx = Object.keys(playableGames).findIndex(title => title === currentGameTitle);
+    const playableGameTitles = Object.keys(playableGames);
+    playableGameTitles.splice(currentGameIdx, 1);
+    console.log(playableGameTitles);
 
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
     // const gameChoice = playableGameTitles[5];
-    const gameChoice = playableGameTitles[Math.floor(Math.random() * playableGameTitles.length)];
+    const gameChoiceIdx = Math.floor(Math.random() * playableGameTitles.length);
+    const gameChoice = playableGameTitles[gameChoiceIdx];
 
     const selectedGame = minigames.find(game => game.title === gameChoice)
 
-    this.setState({ selectedGame: selectedGame })
+    this.setState({ selectedGame: selectedGame });
 
     this.props.dispatch(setCurrentGame(gameChoice));
   }

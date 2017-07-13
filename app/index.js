@@ -56,30 +56,35 @@ class App extends Component {
                 key="playerNumber"
                 component={PlayerNumber}
                 hideNavBar
+                type="reset"
               />
 
               <Scene
                 key="playerSetup"
                 component={PlayerSetup}
                 hideNavBar
+                type="reset"
               />
 
               <Scene
                 key="tableView"
                 component={TableView}
                 hideNavBar
+                type="reset"
               />
 
               <Scene
                 key="gameTitle"
                 component={GameTitle}
                 hideNavBar
+                type="reset"
               />
 
               <Scene
                 key="gamePlay"
                 component={GamePlay}
                 hideNavBar
+                type="reset"
               />
 
             </Scene>

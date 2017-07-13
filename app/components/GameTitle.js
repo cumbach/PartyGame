@@ -24,11 +24,9 @@ class GameTitle extends Component {
   componentWillMount() {
     const playableGames = this.props.currentGame.playableGames;
     const currentGameTitle = this.props.currentGame.currentGame;
-    console.log(currentGameTitle);
     const currentGameIdx = Object.keys(playableGames).findIndex(title => title === currentGameTitle);
     const playableGameTitles = Object.keys(playableGames);
     playableGameTitles.splice(currentGameIdx, 1);
-    console.log(playableGameTitles);
 
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
     // const gameChoice = playableGameTitles[5];
@@ -89,7 +87,6 @@ class GameTitle extends Component {
   }
 
   render() {
-    console.log('render')
     return (
       <View style={styles.container}>
         {this.renderDirections()}

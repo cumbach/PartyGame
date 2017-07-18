@@ -14,7 +14,7 @@ import {
   setCurrentGame,
   shiftPlayerOrder,
   shiftTableState,
-  winnerSelected,
+  winnersSelected,
   loserSelected
 } from '../actions/gameActions';
 
@@ -66,7 +66,7 @@ class TableView extends Component {
     const gameType = this.gameCompletedType();
 
     if (gameType === 'Winning') {
-      this.props.dispatch(winnerSelected(this.props.players.playerOrder[this.state.selectedPlayerIdx]))
+      this.props.dispatch(winnersSelected([this.props.players.playerOrder[this.state.selectedPlayerIdx]]))
     } else if (gameType === 'Losing') {
       this.props.dispatch(loserSelected(this.props.players.playerOrder[this.state.selectedPlayerIdx]))
     }
@@ -86,7 +86,8 @@ class TableView extends Component {
         <TouchableOpacity
           key='next'
           disabled={this.state.selectedPlayerIdx == undefined}
-          onPress={() => this.completeGame()}>
+          onPress={() => this.completeGame()}
+        >
           <Text style={styles.button}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -98,7 +99,8 @@ class TableView extends Component {
       <View style={styles.textContainer}>
         <TouchableOpacity
           key='ready'
-          onPress={() => Actions.gameTitle()}>
+          onPress={() => Actions.gameTitle()}
+        >
           <Text style={styles.button}>Ready!</Text>
         </TouchableOpacity>
       </View>

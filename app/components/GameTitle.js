@@ -8,7 +8,10 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import { setCurrentGame } from '../actions/gameActions';
+import {
+  setCurrentGame,
+  setGameMode
+} from '../actions/gameActions';
 import { minigames } from '../config/data';
 
 import GameMenu from './GameMenu';
@@ -31,17 +34,54 @@ class GameTitle extends Component {
     }
 
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
-    // const gameChoice = playableGameTitles[5];
+    // const gameChoice = 'Categories';
     const gameChoiceIdx = Math.floor(Math.random() * playableGameTitles.length);
     const gameChoice = playableGameTitles[gameChoiceIdx];
-    const selectedGame = minigames.find(game => game.title === gameChoice)
-    this.setState({ selectedGame: selectedGame });
+    const selectedGame = minigames.find(game => game.title === gameChoice);
+    const gameModeIdx = Math.floor(Math.random() * selectedGame.modes.length);
+    const gameMode = selectedGame.modes[gameModeIdx];
 
     this.props.dispatch(setCurrentGame(gameChoice));
+    this.props.dispatch(setGameMode(gameMode));
+
+    this.setState({ selectedGame: selectedGame });
   }
 
   blindPlayPressed() {
     this.setState({displayBlind: false})
+  }
+
+  renderNextButton() {
+    const mode = this.props.currentGame.mode;
+
+    if (mode === 'FFA') {
+      return (
+        <TouchableOpacity
+          key='start'
+          onPress={() => Actions.gamePlay()}
+        >
+          <Text style={styles.start}>Start!</Text>
+        </TouchableOpacity>
+      )
+    } else if (mode === 'team') {
+      return (
+        <TouchableOpacity
+          key='team'
+          onPress={() => Actions.teamView()}
+        >
+          <Text style={styles.start}>Setup</Text>
+        </TouchableOpacity>
+      )
+    } else if (mode === 'duel') {
+      return (
+        <TouchableOpacity
+          key='duel'
+          onPress={() => Actions.duelView()}
+        >
+          <Text style={styles.start}>Setup</Text>
+        </TouchableOpacity>
+      )
+    }
   }
 
   renderDirections() {
@@ -73,15 +113,14 @@ class GameTitle extends Component {
           <Text style={styles.title}>
             {this.state.selectedGame.title}
           </Text>
+          <Text style={styles.directions}>
+            {`Mode: ${this.props.currentGame.mode}`}
+          </Text>
           <Text style={[styles.directions, this.state.selectedGame.style]}>
             {this.state.selectedGame.directions}
           </Text>
 
-          <TouchableOpacity
-            key='start'
-            onPress={() => Actions.gamePlay()}>
-            <Text style={styles.start}>Start!</Text>
-          </TouchableOpacity>
+          {this.renderNextButton()}
         </View>
       );
     }

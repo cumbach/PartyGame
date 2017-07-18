@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -71,6 +72,9 @@ class TableVisuals extends Component {
     return this.props.tableState === 'new' ? 'flex' : 'none'
   }
 
+  shouldDisable(idx) {
+    return this.props.disabledPlayers.includes(idx);
+  }
 
   render() {
     const playerCount = this.props.playerCount;
@@ -124,8 +128,10 @@ class TableVisuals extends Component {
                   shadowColor: this.shouldHighlight(idx) ? '#000' : undefined,
                   shadowOffset: this.shouldHighlight(idx) ? { width: 1, height: 3 } : undefined,
                   shadowOpacity: this.shouldHighlight(idx) ? 0.8 : undefined,
-                  shadowRadius: this.shouldHighlight(idx) ? 3 : undefined
+                  shadowRadius: this.shouldHighlight(idx) ? 3 : undefined,
+                  opacity: this.shouldDisable(idx) ? 0.3 : 1
                 }, styles.circle]}
+                disabled={this.shouldDisable(idx)}
               >
               <Text
                 style={[{
@@ -144,6 +150,10 @@ class TableVisuals extends Component {
     );
   }
 };
+
+TableVisuals.defaultProps = {
+  disabledPlayers: []
+}
 
 const styles = StyleSheet.create({
   table: {

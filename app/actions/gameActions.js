@@ -9,10 +9,13 @@ const {
   setPlayerOrder,
   shiftPlayerOrder,
   shiftTableState,
-  winnerSelected,
+  winnersSelected,
   loserSelected,
   restartGame,
-  topicSelected
+  topicSelected,
+  setGameMode,
+  setTeams,
+  selectDuelOpponentIdx
 } = createActions(
   'SET_PLAYER_NUMBER',
   'SET_CURRENT_GAME',
@@ -22,10 +25,13 @@ const {
   'SET_PLAYER_ORDER',
   'SHIFT_PLAYER_ORDER',
   'SHIFT_TABLE_STATE',
-  'WINNER_SELECTED',
+  'WINNERS_SELECTED',
   'LOSER_SELECTED',
   'RESTART_GAME',
-  'TOPIC_SELECTED'
+  'TOPIC_SELECTED',
+  'SET_GAME_MODE',
+  'SET_TEAMS',
+  'SELECT_DUEL_OPPONENT_IDX'
 );
 
 module.exports = {
@@ -37,8 +43,11 @@ module.exports = {
   setPlayerOrder,
   shiftPlayerOrder,
   shiftTableState,
-  winnerSelected,
+  winnersSelected,
   loserSelected,
   restartGame,
-  topicSelected
+  topicSelected,
+  setGameMode,
+  setTeams,
+  selectDuelOpponentIdx
 };

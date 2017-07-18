@@ -17,7 +17,10 @@ const defaultState = () => {
     currentGame: 'Categories',
     tableState: 'new',
     playableGames: defaultPlayableGames(),
-    removedGames: {}
+    removedGames: {},
+    mode: 'FFA',
+    teams: {},
+    duelOpponentIdx: undefined
   };
 };
 
@@ -74,5 +77,17 @@ export default handleActions({
       ...state,
       playableGames
     }
-  }
+  },
+  SET_GAME_MODE: (state, action) => ({
+    ...state,
+    mode: action.payload
+  }),
+  SET_TEAMS: (state, action) => ({
+    ...state,
+    teams: action.payload
+  }),
+  SELECT_DUEL_OPPONENT_IDX: (state, action) => ({
+    ...state,
+    duelOpponentIdx: action.payload
+  })
 }, defaultState());

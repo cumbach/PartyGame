@@ -13,9 +13,10 @@ export const minigames = [
   {
     title: 'Categories',
     completed: 'Losing',
-    directions: 'Go around the circle in turn.\nEach player has 3 seconds to name\nan item from the category',
+    directions: 'Go around the circle in turn.\nEach player or team has 3 seconds to name\nan item from the category',
     style: {},
     multipleChoice: true,
+    modes: ['FFA', 'team', 'duel'],
     topics: [
       'Beer Brands',
       'Dog Breeds',
@@ -53,6 +54,7 @@ export const minigames = [
     title: 'Taboo',
     completed: 'Winning',
     directions: 'You will give hints to everyone for the secret word.\nYou cannot say rhyming words or words that are in the "excluded" list.\nThe first person to shout out the correct answer wins',
+    modes: ['FFA'],
     style: {fontSize: 20},
     topics: [
       'Baseball',
@@ -76,6 +78,7 @@ export const minigames = [
     completed: 'Winning',
     directions: 'Pick up the phone to hide the answer.\nRead the trivia question aloud.\nThe first person to shout out the correct answer wins',
     style: {},
+    modes: ['FFA'],
     topics: [
       'What is the capital of New York?',
       'Who is the Prime Minister of Canada?',
@@ -146,8 +149,9 @@ export const minigames = [
   {
     title: 'Rhyme',
     completed: 'Losing',
-    directions: 'Each player must say a word\nthat rhymes with the given word',
+    directions: 'Each player or team must say a word\nthat rhymes with the given word',
     style: {},
+    modes: ['duel', 'FFA', 'team'],
     topics: [
       'Ball',
       'Floor',
@@ -171,6 +175,7 @@ export const minigames = [
     completed: 'Losing',
     directions: 'Shout out "Simon says" and name a gesture.\nThe last player to make the gesture loses.',
     style: {},
+    modes: ['FFA'],
     topics: [
       'Play!',
       'Play!',
@@ -184,6 +189,7 @@ export const minigames = [
     completed: 'Losing',
     directions: 'Everyone puts their hands up to imitate driving a car.\n\nStart gameplay by shouting "Vroom" and turning your hands to the left or right.\nThe "driver" is passed to the player next to you in that direction.\n\nThe "driver" can either say "Vroom" and turn their hands to continue passing to the same direction, or "Skert", passing the "driver" in the opposite direction.',
     style: {fontSize: 18, textAlign: 'left'},
+    modes: ['FFA'],
     topics: [
       'Begin Driving!',
       'Begin Driving!',
@@ -195,6 +201,7 @@ export const minigames = [
     completed: 'Losing',
     directions: 'Start the game by saying:\n"I\'m going to the moon, and I\'m bringing (e.g.) an apple."\nThe next player would then say:\n"I\'m going to the moon, and I\'m bringing an apple and a radio."\n\nPlayers must remember and list all items said before them, as well as their own item, without pausing for more than 3 seconds.',
     style: {},
+    modes: ['FFA', 'duel'],
     topics: [
       'Begin!',
       'Begin!',

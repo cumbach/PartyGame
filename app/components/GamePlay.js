@@ -108,8 +108,17 @@ class GamePlay extends Component {
         <TouchableOpacity
           key='end'
           onPress={() => {
+            const gameMode = this.props.currentGame.mode;
             this.props.dispatch(shiftTableState('complete'));
-            Actions.tableView();
+
+            if (gameMode === 'FFA') {
+              Actions.tableView();
+            } else if (gameMode === 'team') {
+              Actions.teamView();
+            } else if (gameMode === 'duel') {
+              Actions.duelView();
+            }
+
           }}
         >
           <Text style={[{

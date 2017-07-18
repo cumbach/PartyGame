@@ -23,9 +23,9 @@ export default handleActions({
       playerOrder: state.playerOrder
     };
   },
-  WINNER_SELECTED: (state, action) => {
-    const winner = action.payload;
-    state.playerScores[winner] += 10;
+  WINNERS_SELECTED: (state, action) => {
+    const winners = action.payload;
+    winners.forEach(winner => state.playerScores[winner] += 10);
 
     return {
       ...state,

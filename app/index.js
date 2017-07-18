@@ -24,6 +24,8 @@ import PlayerNumber   from './components/PlayerNumber';
 import PlayerSetup   from './components/PlayerSetup';
 import TableView     from './components/TableView';
 import GameTitle     from './components/GameTitle';
+import TeamView      from './components/TeamView';
+import DuelView      from './components/DuelView';
 import GamePlay      from './components/GamePlay';
 import GameSettings  from './components/GameSettings';
 
@@ -76,6 +78,20 @@ class App extends Component {
               <Scene
                 key="gameTitle"
                 component={GameTitle}
+                hideNavBar
+                type="reset"
+              />
+
+              <Scene
+                key="teamView"
+                component={TeamView}
+                hideNavBar
+                type="reset"
+              />
+
+              <Scene
+                key="duelView"
+                component={DuelView}
                 hideNavBar
                 type="reset"
               />

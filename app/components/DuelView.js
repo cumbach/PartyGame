@@ -45,7 +45,7 @@ class DuelView extends Component {
 
             Actions.gamePlay();
           }}
-          disabled={!this.state.selectedPlayerIdx}
+          disabled={this.state.selectedPlayerIdx == undefined}
         >
           <Text style={styles.button}>Challenge Someone to a Duel!</Text>
         </TouchableOpacity>
@@ -55,7 +55,7 @@ class DuelView extends Component {
         <TouchableOpacity
           key='complete'
           onPress={() => this.completeGame()}
-          disabled={!this.state.selectedPlayerIdx}
+          disabled={this.state.selectedPlayerIdx == undefined}
         >
           <Text style={styles.start}>Pick Duel Winner</Text>
         </TouchableOpacity>

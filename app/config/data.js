@@ -9,6 +9,13 @@ export const colors = [
   'aqua'
 ];
 
+export const duration = {
+  "Short": 20,
+  "Medium": 30,
+  "Long": 40,
+  "Infinite": 1000
+}
+
 export const minigames = [
   {
     title: 'Categories',

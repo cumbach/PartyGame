@@ -34,6 +34,10 @@ export default handleActions({
     tableState: action.payload
   }),
   RESTART_GAME: (state) => (defaultState()),
+  SET_GAME_DURATION: (state, action) => ({
+    ...state,
+    duration: action.payload
+  }),
   REMOVE_GAME_TYPE: (state, action) => {
     let playableGames = state.playableGames;
     let removedGames = state.removedGames;

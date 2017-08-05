@@ -12,7 +12,6 @@ import { colors } from '../config/data';
 import { setPlayerScores, setPlayerOrder  } from '../actions/gameActions';
 
 import GameMenu from './GameMenu';
-import GameSettings from './GameSettings';
 
 class PlayerSetup extends Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class PlayerSetup extends Component {
 
     this.props.dispatch(setPlayerScores(playerScores));
     this.props.dispatch(setPlayerOrder(this.state.playersArray));
-    Actions.tableView();
+    Actions.gameDuration();
   }
 
   numberTouch(color){
@@ -55,8 +54,6 @@ class PlayerSetup extends Component {
     return (
       <View style={styles.container}>
         <GameMenu />
-        <GameSettings />
-
 
         <Text style={styles.directions}>
           PASS THE PHONE AROUND TO CHOOSE YOUR COLOR

@@ -22,6 +22,7 @@ import reducers from './reducers';
 import InitialScreen from './components/InitialScreen';
 import PlayerNumber   from './components/PlayerNumber';
 import PlayerSetup   from './components/PlayerSetup';
+import GameDuration  from './components/GameDuration';
 import TableView     from './components/TableView';
 import GameTitle     from './components/GameTitle';
 import TeamView      from './components/TeamView';
@@ -64,6 +65,13 @@ class App extends Component {
               <Scene
                 key="playerSetup"
                 component={PlayerSetup}
+                hideNavBar
+                type="reset"
+              />
+
+              <Scene
+                key="gameDuration"
+                component={GameDuration}
                 hideNavBar
                 type="reset"
               />

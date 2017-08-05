@@ -8,26 +8,27 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import { setPlayerNumber  } from '../actions/gameActions';
-import { restartGame } from '../actions/gameActions';
+import { duration } from '../config/data';
+
+import { setGameDuration  } from '../actions/gameActions';
 
 import GameMenu from './GameMenu';
 
-class PlayerNumber extends Component {
+class GameDuration extends Component {
   constructor(props) {
     super(props);
     this.state = { highlightIdx: null };
   }
 
-  completePlayerNumber() {
+  completeDurationSelection() {
     if (this.state.highlightIdx != null) {
-      this.props.dispatch(restartGame());
-      this.props.dispatch(setPlayerNumber(this.state.highlightIdx + 1));
-      Actions.playerSetup();
+      var selectedDuration = duration[Object.keys(duration)[this.state.highlightIdx]]
+      this.props.dispatch(setGameDuration(selectedDuration));
+      Actions.tableView();
     }
   }
 
-  numberTouch(idx) {
+  durationTouch(idx) {
     this.setState({ highlightIdx:idx });
   }
 
@@ -41,21 +42,22 @@ class PlayerNumber extends Component {
         <GameMenu />
 
         <Text style={styles.directions}>
-          CHOOSE THE NUMBER OF PLAYERS
+          SELECT THE GAME DURATION
         </Text>
+
         <View style={styles.numbersContainer}>
         {
-          [...Array(8)].map((_, idx) => {
+          Object.keys(duration).map((duration, idx) => {
             return (
                 <TouchableOpacity
                   key={`Player${idx + 1}`}
-                  onPress={() => this.numberTouch(idx)}
+                  onPress={() => this.durationTouch(idx)}
                   style={[{
                     backgroundColor: this.shouldHighlight(idx) ? 'green' : 'goldenrod',
                   }, styles.numberBlock]}
                 >
                   <Text style={styles.numbers}>
-                    {idx + 1}
+                    {duration}
                   </Text>
                 </TouchableOpacity>
             )
@@ -67,7 +69,7 @@ class PlayerNumber extends Component {
         <TouchableOpacity
           key='done'
           onPress={() => {
-            this.completePlayerNumber()
+            this.completeDurationSelection()
           }}
         >
           <Text style={styles.done}>Done</Text>
@@ -125,4 +127,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(({ players }) => ({ players }))(PlayerNumber);
+export default connect(({ currentGame }) => ({ currentGame }))(GameDuration);

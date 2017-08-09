@@ -31,7 +31,7 @@ class GamePlay extends Component {
 
     // check if multipleChoices enabled for title
     if (randomTopic[2]) {
-      this.setState({ topic: [this.topics[rndNum], this.topics[(rndNum+1)%this.topics.length], this.topics[(rndNum+2)%this.topics.length], ["Create your Own"]] })
+      this.setState({ topic: [this.topics[rndNum], this.topics[(rndNum+1)%this.topics.length], this.topics[(rndNum+2)%this.topics.length], ["Select your Own"]] })
       this.randomNum = rndNum;
 
     } else {

@@ -15,7 +15,8 @@ import {
   shiftPlayerOrder,
   shiftTableState,
   winnersSelected,
-  loserSelected
+  loserSelected,
+  incrementTurnNumber
 } from '../actions/gameActions';
 
 import TableVisuals from './TableVisuals';
@@ -42,6 +43,7 @@ class TableView extends Component {
   completeGame() {
     var duration = 1000;
     this.startCompleteAnimation(duration);
+    this.props.dispatch(incrementTurnNumber());
 
     setTimeout(() => {
       this.handleScoreChange();
@@ -109,7 +111,14 @@ class TableView extends Component {
 
   renderTableActions(tableState) {
     if (tableState === 'new') {
-      return this.renderNextGame();
+      if (this.props.currentGame.currentTurnNumber === this.props.currentGame.duration) {
+        
+        // HUAN LOOK HERE FOR TIE BREAKER LOGIC
+
+        Actions.gameOver()
+      } else {
+        return this.renderNextGame();
+      }
     } else if (tableState === 'complete') {
       return this.renderCompleteGame();
     }

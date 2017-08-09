@@ -20,7 +20,8 @@ const defaultState = () => {
     removedGames: {},
     mode: 'FFA',
     teams: {},
-    duelOpponentIdx: undefined
+    duelOpponentIdx: undefined,
+    currentTurnNumber: 0
   };
 };
 
@@ -37,6 +38,10 @@ export default handleActions({
   SET_GAME_DURATION: (state, action) => ({
     ...state,
     duration: action.payload
+  }),
+  INCREMENT_TURN_NUMBER: (state) => ({
+    ...state,
+    currentTurnNumber: state.currentTurnNumber + 1
   }),
   REMOVE_GAME_TYPE: (state, action) => {
     let playableGames = state.playableGames;

@@ -85,9 +85,8 @@ class GameTitle extends Component {
   }
 
   renderDirections() {
-    console.log(this.state)
     // Check is this game requires bringing the phone up off the table (Blind game)
-    if (this.state.displayBlind && (this.state.selectedGame.title === 'Taboo' || this.state.selectedGame.title === 'Trivia' || this.state.selectedGame.title === "Simon Says")) {
+    if (this.state.displayBlind && (this.state.selectedGame.title === 'Hum a Song' || this.state.selectedGame.title === 'Taboo' || this.state.selectedGame.title === 'Trivia' || this.state.selectedGame.title === "Simon Says")) {
       return (
         <View>
           <Text style={[styles.title, styles.blindTitle]}>

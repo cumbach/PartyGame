@@ -16,7 +16,8 @@ const {
   topicSelected,
   setGameMode,
   setTeams,
-  selectDuelOpponentIdx
+  selectDuelOpponentIdx,
+  incrementTurnNumber
 } = createActions(
   'SET_PLAYER_NUMBER',
   'SET_CURRENT_GAME',
@@ -33,7 +34,8 @@ const {
   'TOPIC_SELECTED',
   'SET_GAME_MODE',
   'SET_TEAMS',
-  'SELECT_DUEL_OPPONENT_IDX'
+  'SELECT_DUEL_OPPONENT_IDX',
+  'INCREMENT_TURN_NUMBER'
 );
 
 module.exports = {
@@ -52,5 +54,6 @@ module.exports = {
   topicSelected,
   setGameMode,
   setTeams,
-  selectDuelOpponentIdx
+  selectDuelOpponentIdx,
+  incrementTurnNumber
 };

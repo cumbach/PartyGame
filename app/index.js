@@ -29,6 +29,7 @@ import TeamView      from './components/TeamView';
 import DuelView      from './components/DuelView';
 import GamePlay      from './components/GamePlay';
 import GameSettings  from './components/GameSettings';
+import GameOver      from './components/GameOver';
 
 
 const RouterWithRedux = connect()(Router);
@@ -107,6 +108,13 @@ class App extends Component {
               <Scene
                 key="gamePlay"
                 component={GamePlay}
+                hideNavBar
+                type="reset"
+              />
+
+              <Scene
+                key="gameOver"
+                component={GameOver}
                 hideNavBar
                 type="reset"
               />

@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import SimpleStepper from 'react-native-simple-stepper';
 
 import { minigames } from '../config/data';
 import {
@@ -17,7 +18,9 @@ import {
   winnersSelected,
   setTeams,
   shiftPlayerOrder,
-  selectDuelOpponentIdx
+  selectDuelOpponentIdx,
+  selectDuelValue,
+  duelWinnerSelected
 } from '../actions/gameActions';
 
 import TableVisuals from './TableVisuals';
@@ -30,7 +33,8 @@ class DuelView extends Component {
 
     this.state = {
       selectedPlayerIdx: undefined,
-      spinValue: new Animated.Value(0)
+      spinValue: new Animated.Value(0),
+      duelValue: 0
     };
   }
 
@@ -41,6 +45,7 @@ class DuelView extends Component {
           key='duel'
           onPress={() => {
             this.props.dispatch(selectDuelOpponentIdx(this.state.selectedPlayerIdx));
+            this.props.dispatch(selectDuelValue(this.state.duelValue || 10));
             this.setState({ selectedPlayerIdx: undefined });
 
             Actions.gamePlay();
@@ -68,9 +73,12 @@ class DuelView extends Component {
     this.startCompleteAnimation(duration);
 
     setTimeout(() => {
-      const winner = this.props.players.playerOrder[this.state.selectedPlayerIdx];
+      const playerOrder = this.props.players.playerOrder;
+      const winner = playerOrder[this.state.selectedPlayerIdx];
+      const loser = this.state.selectedPlayerIdx === 0 ?
+        playerOrder[this.props.players.duelOpponentIdx] : playerOrder[0];
 
-      this.props.dispatch(winnersSelected([winner]));
+      this.props.dispatch(duelWinnerSelected([winner, loser]));
       this.props.dispatch(shiftPlayerOrder());
       this.props.dispatch(shiftTableState('new'));
       this.setState({ selectedPlayerIdx: undefined });
@@ -95,11 +103,20 @@ class DuelView extends Component {
     } else if (this.props.currentGame.tableState === 'complete') {
       const playerList = _.range(0, this.props.players.playerCount);
 
-      playerList.splice(this.props.currentGame.duelOpponentIdx, 1);
+      playerList.splice(this.props.players.duelOpponentIdx, 1);
       playerList.splice(0, 1);
 
       return playerList;
     }
+  }
+
+  maxDuelValue() {
+    const duelIdx = this.state.selectedPlayerIdx;
+    const playerIdx = 0;
+    const playerScores = this.props.players.playerScores;
+    const playerOrder = this.props.players.playerOrder;
+
+    return Math.min(playerScores[playerOrder[duelIdx]], playerScores[playerOrder[playerIdx]]);
   }
 
   render() {
@@ -129,6 +146,22 @@ class DuelView extends Component {
           playerScores={this.props.players.playerScores}
           disabledPlayers={this.disabledPlayers()}
         />
+
+        {
+          this.maxDuelValue() > 0 && this.props.currentGame.tableState === 'new' ?
+            <View>
+              <Text>
+                {`Bet points: ${this.state.duelValue}`}
+              </Text>
+              <SimpleStepper
+                intialValue={0}
+                stepValue={10}
+                maximumValue={this.maxDuelValue()}
+                valueChanged={value => this.setState({ duelValue: value })}
+              />
+            </View> :
+            undefined
+        }
 
         <View style={styles.textContainer}>
           {this.renderNextButton()}

@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-const defaultState = { playerCount: 0, playerScores: {}, playerOrder: [] }
+const defaultState = { playerCount: 0, playerScores: {}, playerOrder: [], duelValue: undefined, duelOpponentIdx: undefined }
 
 export default handleActions({
   SET_PLAYER_NUMBER: (state, action) => ({
@@ -32,6 +32,19 @@ export default handleActions({
       playerScores: state.playerScores
     };
   },
+  DUEL_WINNER_SELECTED: (state, action) => {
+    const winner = action.payload[0];
+    const loser = action.payload[1];
+    state.playerScores[winner] += state.duelValue;
+    if (state.playerScores[loser] > 0) {
+      state.playerScores[loser] -= state.duelValue;
+    }
+
+    return {
+      ...state,
+      playerScores: state.playerScores
+    };
+  },
   LOSER_SELECTED: (state, action) => {
     const loser = action.payload;
     Object.keys(state.playerScores).forEach((player) => {
@@ -45,5 +58,13 @@ export default handleActions({
       playerScores: state.playerScores
     };
   },
-  RESTART_GAME: (state) => (defaultState)
+  RESTART_GAME: (state) => (defaultState),
+  SELECT_DUEL_VALUE: (state, action) => ({
+    ...state,
+    duelValue: action.payload
+  }),
+  SELECT_DUEL_OPPONENT_IDX: (state, action) => ({
+    ...state,
+    duelOpponentIdx: action.payload
+  })
 }, defaultState);

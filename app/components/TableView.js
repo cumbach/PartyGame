@@ -111,12 +111,13 @@ class TableView extends Component {
 
   renderTableActions(tableState) {
     if (tableState === 'new') {
-      if (this.props.currentGame.currentTurnNumber === this.props.currentGame.duration) {
-        
-        // HUAN LOOK HERE FOR TIE BREAKER LOGIC
-
-        Actions.gameOver()
-      } else {
+      if (this.props.currentGame.currentTurnNumber === this.props.currentGame.duration - 1) {
+        this.props.dispatch(winnerOnly());
+        return this.renderNextGame();
+      } else if (this.props.currentGame.currentTurnNumber === this.props.currentGame.duration) {
+        Actions.gameOver();
+      }
+      else {
         return this.renderNextGame();
       }
     } else if (tableState === 'complete') {

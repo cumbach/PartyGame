@@ -28,11 +28,17 @@ class GameTitle extends Component {
     const playableGames = this.props.currentGame.playableGames;
     const currentGameTitle = this.props.currentGame.currentGame;
     const currentGameIdx = Object.keys(playableGames).findIndex(title => title === currentGameTitle);
-    const playableGameTitles = Object.keys(playableGames);
+    let playableGameTitles = Object.keys(playableGames);
     if (playableGameTitles.length > 1) {
       playableGameTitles.splice(currentGameIdx, 1);
     }
 
+    if (this.props.currentGame.duelOnly) {
+      playableGameTitles = _.every(playableGameTitles, (title) => {
+        const game = minigames.find(game => game.title === title);
+        return game.modes.includes('duel');
+      })
+    }
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
     // const gameChoice = 'Categories';
     const gameChoiceIdx = Math.floor(Math.random() * playableGameTitles.length);
@@ -40,6 +46,7 @@ class GameTitle extends Component {
     const selectedGame = minigames.find(game => game.title === gameChoice);
     const gameModeIdx = Math.floor(Math.random() * selectedGame.modes.length);
     const gameMode = selectedGame.modes[gameModeIdx];
+    // const gameMode = 'duel';
 
     this.props.dispatch(setCurrentGame(gameChoice));
     this.props.dispatch(setGameMode(gameMode));

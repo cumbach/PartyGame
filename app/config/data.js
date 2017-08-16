@@ -257,4 +257,17 @@ export const minigames = [
     ]
   },
 
+  {
+    title: 'Rock Paper Scissors',
+    completed: 'Winning',
+    directions: 'Play a round of rock paper scissors.',
+    style: {},
+    modes: ['duel'],
+    topics: [
+      'Play!',
+      'Play!',
+      'Play!',
+      'Play!'
+    ]
+  }
 ]

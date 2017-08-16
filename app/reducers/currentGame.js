@@ -20,7 +20,6 @@ const defaultState = () => {
     removedGames: {},
     mode: 'FFA',
     teams: {},
-    duelOpponentIdx: undefined,
     currentTurnNumber: 0
   };
 };
@@ -94,9 +93,5 @@ export default handleActions({
   SET_TEAMS: (state, action) => ({
     ...state,
     teams: action.payload
-  }),
-  SELECT_DUEL_OPPONENT_IDX: (state, action) => ({
-    ...state,
-    duelOpponentIdx: action.payload
   })
 }, defaultState());

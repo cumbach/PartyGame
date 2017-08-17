@@ -10,7 +10,7 @@ export const colors = [
 ];
 
 export const duration = {
-  "Short": 5,
+  "Short": 20,
   "Medium": 30,
   "Long": 40,
   "Infinite": 1000

@@ -13,6 +13,7 @@ import {
   setGameMode
 } from '../actions/gameActions';
 import { minigames } from '../config/data';
+import _ from 'lodash';
 
 import GameMenu from './GameMenu';
 import GameSettings from './GameSettings';
@@ -34,9 +35,9 @@ class GameTitle extends Component {
     }
 
     if (this.props.currentGame.tieBreaker) {
-      playableGameTitles = _.every(playableGameTitles, (title) => {
+      playableGameTitles = _.filter(playableGameTitles, (title) => {
         const game = minigames.find(game => game.title === title);
-        return game.completed === 'Winning' && game.modes === ['FFA'];
+        return game.completed === 'Winning' && game.modes[0] === 'FFA';
       })
     }
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
@@ -119,7 +120,7 @@ class GameTitle extends Component {
           <Text style={styles.title}>
             {this.state.selectedGame.title}
           </Text>
-          <Text>
+          <Text style={styles.directions}>
             {this.props.currentGame.tieBreaker ? 'Tie Breaker Round' : ''}
           </Text>
           <Text style={styles.directions}>
@@ -136,6 +137,7 @@ class GameTitle extends Component {
   }
 
   render() {
+    console.log('here')
     return (
       <View style={styles.container}>
         {this.renderDirections()}

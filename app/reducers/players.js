@@ -77,13 +77,14 @@ export default handleActions({
   }),
   TIE_BREAKER: (state) => {
     const maxScore = _.max(Object.values(state.playerScores));
-    const disabledPlayers = _.every(Object.keys(state.playerScores), (player) => {
+    const disabledPlayers = _.filter(Object.keys(state.playerScores), (player) => {
       return state.playerScores[player] !== maxScore;
     });
+    const playerIndices = disabledPlayers.map(player => state.playerOrder.indexOf(player));
 
     return {
       ...state,
-      disabledPlayers: disabledPlayers
+      disabledPlayers: playerIndices
     }
   }
 }, defaultState);

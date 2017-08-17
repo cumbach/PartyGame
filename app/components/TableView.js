@@ -70,9 +70,9 @@ class TableView extends Component {
     const gameType = this.gameCompletedType();
 
     if (gameType === 'Winning') {
-      this.props.dispatch(winnersSelected([this.props.players.playerOrder[this.state.selectedPlayerIdx]]))
+      this.props.dispatch(winnersSelected([this.props.players.playerOrder[this.state.selectedPlayerIdx]]));
     } else if (gameType === 'Losing') {
-      this.props.dispatch(loserSelected(this.props.players.playerOrder[this.state.selectedPlayerIdx]))
+      this.props.dispatch(loserSelected(this.props.players.playerOrder[this.state.selectedPlayerIdx]));
     }
   }
 
@@ -103,7 +103,14 @@ class TableView extends Component {
       <View style={styles.textContainer}>
         <TouchableOpacity
           key='ready'
-          onPress={() => Actions.gameTitle()}
+          onPress={() => {
+            if (this.props.currentGame.currentTurnNumber >= this.props.currentGame.duration) {
+              const tieBreaker = this.checkTieBreaker();
+              tieBreaker ? Actions.gameTitle() : Actions.gameOver();
+            } else {
+              Actions.gameTitle();
+            }
+          }}
         >
           <Text style={styles.button}>Ready!</Text>
         </TouchableOpacity>
@@ -112,26 +119,24 @@ class TableView extends Component {
   }
 
   checkTieBreaker() {
+    const scoreValues = Object.values(this.props.players.playerScores);
     const duplicates = _.filter(
-      Object.values(this.props.players.playerScores),
+      scoreValues,
       (value, index, iteratee) => _.includes(iteratee, value, index + 1)
     );
 
-    if (duplicates.length) {
+    if (duplicates.length && duplicates.includes(_.max(scoreValues))) {
       this.props.dispatch(tieBreaker());
+
+      return true;
     }
+
+    return false;
   }
 
   renderTableActions(tableState) {
     if (tableState === 'new') {
-      if (this.props.currentGame.currentTurnNumber === this.props.currentGame.duration - 1) {
-        this.checkTieBreaker();
-        return this.renderNextGame();
-      } else if (this.props.currentGame.currentTurnNumber === this.props.currentGame.duration) {
-        Actions.gameOver();
-      } else {
-        return this.renderNextGame();
-      }
+      return this.renderNextGame();
     } else if (tableState === 'complete') {
       return this.renderCompleteGame();
     }

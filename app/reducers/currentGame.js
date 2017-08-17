@@ -20,7 +20,8 @@ const defaultState = () => {
     removedGames: {},
     mode: 'FFA',
     teams: {},
-    currentTurnNumber: 0
+    currentTurnNumber: 0,
+    tieBreaker: false
   };
 };
 
@@ -93,5 +94,9 @@ export default handleActions({
   SET_TEAMS: (state, action) => ({
     ...state,
     teams: action.payload
+  }),
+  TIE_BREAKER: (state) => ({
+    ...state,
+    tieBreaker: true
   })
 }, defaultState());

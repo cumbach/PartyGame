@@ -19,7 +19,8 @@ const {
   selectDuelOpponentIdx,
   selectDuelValue,
   incrementTurnNumber,
-  duelWinnerSelected
+  duelWinnerSelected,
+  tieBreaker
 } = createActions(
   'SET_PLAYER_NUMBER',
   'SET_CURRENT_GAME',
@@ -38,8 +39,9 @@ const {
   'SET_TEAMS',
   'SELECT_DUEL_OPPONENT_IDX',
   'SELECT_DUEL_VALUE',
-  'INCREMENT_TURN_NUMBER'
-  'DUEL_WINNER_SELECTED'
+  'INCREMENT_TURN_NUMBER',
+  'DUEL_WINNER_SELECTED',
+  'TIE_BREAKER'
 );
 
 module.exports = {
@@ -61,5 +63,6 @@ module.exports = {
   selectDuelOpponentIdx,
   selectDuelValue,
   incrementTurnNumber,
-  duelWinnerSelected
+  duelWinnerSelected,
+  tieBreaker
 };

@@ -1,6 +1,14 @@
+import _ from 'lodash';
 import { handleActions } from 'redux-actions';
 
-const defaultState = { playerCount: 0, playerScores: {}, playerOrder: [], duelValue: undefined, duelOpponentIdx: undefined }
+const defaultState = {
+  playerCount: 0,
+  playerScores: {},
+  playerOrder: [],
+  duelValue: undefined,
+  duelOpponentIdx: undefined,
+  disabledPlayers: []
+}
 
 export default handleActions({
   SET_PLAYER_NUMBER: (state, action) => ({
@@ -66,5 +74,16 @@ export default handleActions({
   SELECT_DUEL_OPPONENT_IDX: (state, action) => ({
     ...state,
     duelOpponentIdx: action.payload
-  })
+  }),
+  TIE_BREAKER: (state) => {
+    const maxScore = _.max(Object.values(state.playerScores));
+    const disabledPlayers = _.every(Object.keys(state.playerScores), (player) => {
+      return state.playerScores[player] !== maxScore;
+    });
+
+    return {
+      ...state,
+      disabledPlayers: disabledPlayers
+    }
+  }
 }, defaultState);

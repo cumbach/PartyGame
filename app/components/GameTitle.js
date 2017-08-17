@@ -33,10 +33,10 @@ class GameTitle extends Component {
       playableGameTitles.splice(currentGameIdx, 1);
     }
 
-    if (this.props.currentGame.duelOnly) {
+    if (this.props.currentGame.tieBreaker) {
       playableGameTitles = _.every(playableGameTitles, (title) => {
         const game = minigames.find(game => game.title === title);
-        return game.modes.includes('duel');
+        return game.completed === 'Winning' && game.modes === ['FFA'];
       })
     }
     // FOR TESTING: JUST SET SPECIFIC GAME TYPE
@@ -118,6 +118,9 @@ class GameTitle extends Component {
         <View>
           <Text style={styles.title}>
             {this.state.selectedGame.title}
+          </Text>
+          <Text>
+            {this.props.currentGame.tieBreaker ? 'Tie Breaker Round' : ''}
           </Text>
           <Text style={styles.directions}>
             {`Mode: ${this.props.currentGame.mode}`}

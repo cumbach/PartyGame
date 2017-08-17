@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import { minigames } from '../config/data';
 import {
@@ -16,7 +17,8 @@ import {
   shiftTableState,
   winnersSelected,
   loserSelected,
-  incrementTurnNumber
+  incrementTurnNumber,
+  tieBreaker
 } from '../actions/gameActions';
 
 import TableVisuals from './TableVisuals';
@@ -109,22 +111,32 @@ class TableView extends Component {
     )
   }
 
+  checkTieBreaker() {
+    const duplicates = _.filter(
+      Object.values(this.props.players.playerScores),
+      (value, index, iteratee) => _.includes(iteratee, value, index + 1)
+    );
+
+    if (duplicates.length) {
+      this.props.dispatch(tieBreaker());
+    }
+  }
+
   renderTableActions(tableState) {
     if (tableState === 'new') {
       if (this.props.currentGame.currentTurnNumber === this.props.currentGame.duration - 1) {
-        this.props.dispatch(winnerOnly());
+        this.checkTieBreaker();
         return this.renderNextGame();
       } else if (this.props.currentGame.currentTurnNumber === this.props.currentGame.duration) {
         Actions.gameOver();
-      }
-      else {
+      } else {
         return this.renderNextGame();
       }
     } else if (tableState === 'complete') {
       return this.renderCompleteGame();
     }
 
-    return undefined
+    return undefined;
   }
 
   render() {
@@ -159,6 +171,7 @@ class TableView extends Component {
           highlightIdx={this.state.selectedPlayerIdx}
           playerOrder={this.props.players.playerOrder}
           playerScores={this.props.players.playerScores}
+          disabledPlayers={this.props.players.disabledPlayers}
         />
 
         {this.renderTableActions(tableState)}

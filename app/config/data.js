@@ -199,27 +199,6 @@ export const minigames = [
     ]
   },
   {
-    title: 'Make a Rule',
-    completed: 'Winning',
-    directions: 'Select a song to hum to the other players.\nThe first player to guess the song correctly wins.',
-    style: {},
-    multipleChoice: true,
-    modes: ['FFA'],
-    topics: [
-      'Mary had a Little Lamb',
-      'Joy to the World',
-      'Pop goes the Weasel',
-      'Seven Nation Army',
-      'Bohemian Rhapsody',
-      'Hey Jude',
-      'Hotel California',
-      'Respect',
-      'Dancing Queen',
-      'No Woman No Cry',
-      'Every Breath You Take',
-    ]
-  },
-  {
     title: 'Simon Says',
     completed: 'Losing',
     directions: 'Shout out "Simon says" and name a gesture.\nThe last player to make the gesture loses.',

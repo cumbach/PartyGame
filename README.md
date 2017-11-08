@@ -1,5 +1,8 @@
 # PartyGame
 
+## Install Xcode
+- https://itunes.apple.com/us/app/xcode/id497799835?mt=12
+
 ## Installing React Native
 - `brew install node`
 - `brew install watchman`
